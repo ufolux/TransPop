@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+/* Custom styles can go here */
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  /* Prevent scrolling on the main window if needed */
+}
+
+.draggable {
+  -webkit-app-region: drag;
+}
+
+.non-draggable {
+  -webkit-app-region: no-drag;
+}
