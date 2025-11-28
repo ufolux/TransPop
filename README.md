@@ -1,6 +1,9 @@
 # TransPop 🚀
 > **Make Translation Simple Again** ✨
 
+<img width="823" height="379" alt="image" src="https://github.com/user-attachments/assets/b6b30116-f11a-4aa4-b61a-d541aefda185" />
+
+
 Tired of the `Cmd+C` -> Open Browser -> Type "Google Translate" -> `Cmd+V` -> Cry -> Repeat cycle? 
 
 Yeah, us too. That's why we built **TransPop**. It's like having a Babel fish in your menu bar, but less slimy.
