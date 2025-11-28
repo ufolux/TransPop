@@ -1,7 +1,7 @@
 # TransPop 🚀
 > **Make Translation Simple Again** ✨
 
-<img width="823" height="379" alt="image" src="https://github.com/user-attachments/assets/b6b30116-f11a-4aa4-b61a-d541aefda185" />
+<img width="678" height="411" alt="image" src="https://github.com/user-attachments/assets/1052df15-d7e2-49ba-bed1-f74c965ae3d2" />
 
 
 Tired of the `Cmd+C` -> Open Browser -> Type "Google Translate" -> `Cmd+V` -> Cry -> Repeat cycle? 
