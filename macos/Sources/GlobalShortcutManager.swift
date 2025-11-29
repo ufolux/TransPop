@@ -24,12 +24,20 @@ class GlobalShortcutManager {
             userInfo: nil
         ) else {
             print("Failed to create event tap")
+            let alert = NSAlert()
+            alert.messageText = "Shortcut Error"
+            alert.informativeText = "Failed to create global shortcut listener. Please ensure Accessibility permissions are granted and restart the app."
+            alert.alertStyle = .critical
+            alert.addButton(withTitle: "OK")
+            DispatchQueue.main.async {
+                alert.runModal()
+            }
             return
         }
         
         self.eventTap = eventTap
         self.runLoopSource = CFMachPortCreateRunLoopSource(kCFAllocatorDefault, eventTap, 0)
-        CFRunLoopAddSource(CFRunLoopGetCurrent(), runLoopSource, .commonModes)
+        CFRunLoopAddSource(CFRunLoopGetMain(), runLoopSource, .commonModes)
         CGEvent.tapEnable(tap: eventTap, enable: true)
     }
     

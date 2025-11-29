@@ -8,6 +8,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Force app to be a regular app (shows in Dock, has UI)
         NSApp.setActivationPolicy(.regular)
         
+        // Check for Accessibility Permissions
+        checkAccessibilityPermissions()
+        
         // Setup Status Bar
         statusBarItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
         
@@ -141,6 +144,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.makeKeyAndOrderFront(nil)
         
         return true
+    }
+    func checkAccessibilityPermissions() {
+        let options: NSDictionary = [kAXTrustedCheckOptionPrompt.takeUnretainedValue() as String : true]
+        let accessEnabled = AXIsProcessTrustedWithOptions(options)
+        
+        if !accessEnabled {
+            print("Access not enabled. Prompting user.")
+            let alert = NSAlert()
+            alert.messageText = "Permissions Required"
+            alert.informativeText = "TransPop needs Accessibility permissions to detect shortcuts. Please grant access in System Settings and then RESTART the app."
+            alert.alertStyle = .warning
+            alert.addButton(withTitle: "OK")
+            alert.runModal()
+        }
     }
 }
 
