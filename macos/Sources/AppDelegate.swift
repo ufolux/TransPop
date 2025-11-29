@@ -63,8 +63,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         // Update State
         AppState.shared.sourceText = text
+        AppState.shared.sourceLang = "auto" // Always auto-detect for shortcut
         AppState.shared.viewMode = .mini
         AppState.shared.performTranslation()
+        
+        // Hide Zoom (Fullscreen) button in Mini Mode
+        window.standardWindowButton(.zoomButton)?.isHidden = true
         
         // Position Window at Cursor
         let mouseLoc = NSEvent.mouseLocation
@@ -91,6 +95,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @objc func expandWindow() {
         AppState.shared.viewMode = .full
         
+        // Show Zoom button in Full Mode
+        window.standardWindowButton(.zoomButton)?.isHidden = false
+        
         // Center window or keep position but resize?
         // Let's center for full mode as it's cleaner
         let width: CGFloat = 450
@@ -114,16 +121,37 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             window.orderOut(nil)
         } else {
             AppState.shared.viewMode = .full
+            // Show Zoom button in Full Mode
+            window.standardWindowButton(.zoomButton)?.isHidden = false
             window.setFrame(NSRect(x: 0, y: 0, width: 450, height: 600), display: true)
             window.center()
             window.makeKeyAndOrderFront(nil)
             NSApp.activate(ignoringOtherApps: true)
         }
     }
+    
+    func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
+        // Always switch to Full Mode when clicking Dock Icon
+        AppState.shared.viewMode = .full
+        window.standardWindowButton(.zoomButton)?.isHidden = false
+        
+        // Reset to default full size and center
+        window.setFrame(NSRect(x: 0, y: 0, width: 450, height: 600), display: true)
+        window.center()
+        window.makeKeyAndOrderFront(nil)
+        
+        return true
+    }
 }
 
 extension AppDelegate: NSWindowDelegate {
     func windowShouldClose(_ sender: NSWindow) -> Bool {
+        // If in Mini Mode, just minimize without asking
+        if AppState.shared.viewMode == .mini {
+            sender.orderOut(nil)
+            return false
+        }
+        
         let alert = NSAlert()
         alert.messageText = "Close TransPop?"
         alert.informativeText = "Do you want to quit the application or minimize it to the status bar?"

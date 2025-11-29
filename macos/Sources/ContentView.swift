@@ -44,11 +44,15 @@ struct MiniView: View {
                     .pickerStyle(.inline)
                     .labelsHidden()
                 } label: {
-                    Image(systemName: "globe")
-                        .font(.system(size: 14, weight: .medium))
-                        .foregroundColor(.secondary)
-                        .frame(width: 24, height: 24)
-                        .contentShape(Rectangle())
+                    HStack(spacing: 4) {
+                        Text(languageName(for: appState.targetLang))
+                            .font(.system(.subheadline, design: .rounded).weight(.bold))
+                            .foregroundColor(.secondary)
+                    }
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 4)
+                    .background(Color.gray.opacity(0.1))
+                    .cornerRadius(6)
                 }
                 .menuStyle(.borderlessButton)
                 .fixedSize()
@@ -58,17 +62,7 @@ struct MiniView: View {
                 
                 Spacer()
                 
-                HStack(spacing: 12) {
-                    Button(action: {
-                        NotificationCenter.default.post(name: NSNotification.Name("ExpandWindow"), object: nil)
-                    }) {
-                        Image(systemName: "arrow.up.left.and.arrow.down.right")
-                            .font(.system(size: 12, weight: .semibold))
-                            .foregroundColor(.secondary)
-                    }
-                    .buttonStyle(.plain)
-                    .help("Expand")
-                }
+                Spacer()
             }
             .padding(.horizontal, 12)
             .padding(.top, 40)
