@@ -23,11 +23,11 @@ Because life is too short to manually copy-paste text into a browser tab.
 
 ## 🛠 Tech Stack (The Nerd Stuff)
 
-Built with the "Holy Trinity" of modern desktop dev:
-*   **Electron**: Because RAM is meant to be used. 🐏
-*   **React**: Because we love components. ⚛️
-*   **TypeScript**: Because we hate runtime errors. 🛡️
-*   **TailwindCSS**: Because writing CSS files is so 2015. 💅
+Built with pure, unadulterated **Swift** and **SwiftUI**. No Electron. No Chrome instances eating your RAM. Just pure, native performance. 🍏
+
+*   **SwiftUI**: Declarative UI that looks good on macOS.
+*   **AppKit**: For the nitty-gritty window management and status bar magic.
+*   **Combine**: For reactive state management.
 
 ## 🏃‍♂️ How to Run
 
@@ -37,27 +37,22 @@ Want to run this bad boy locally? Here you go:
 # 1. Clone the repo (duh)
 git clone https://github.com/ufolux/TransPop.git
 
-# 2. Install dependencies (grab a coffee ☕️)
-npm install
+# 2. Go to the macos folder
+cd macos
 
-# 3. Start the magic ✨
-npm run dev
+# 3. Run it! 🚀
+swift run
 ```
 
 ## 📦 Build
 
-Want to share it with your grandma? Build it:
+Want to build a release version?
 
 ```bash
-# For macOS (The superior OS, obviously)
-npm run build:mac
-
-# For Windows (If you must)
-npm run build:win
-
-# For Linux (You know what you're doing)
-npm run build:linux
+cd macos
+swift build -c release
 ```
+
 
 ## 🤝 Contributing
 
