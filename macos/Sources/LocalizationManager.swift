@@ -1,0 +1,303 @@
+import SwiftUI
+import Combine
+
+class LocalizationManager: ObservableObject {
+    static let shared = LocalizationManager()
+    
+    @AppStorage("appLanguage") var language: String = "en"
+    
+    private let translations: [String: [String: String]] = [
+        // English
+        "en": [
+            "app.name": "TransPop",
+            "onboarding.title": "Permissions Required",
+            "onboarding.desc": "TransPop needs Accessibility permissions to detect the global shortcut (Cmd+C+C) and read the selected text.",
+            "onboarding.granted": "Permissions Granted!",
+            "onboarding.restart_required": "Restart Required",
+            "onboarding.restart_desc": "Please restart the app to apply changes.",
+            "onboarding.restart_desc_macos": "macOS may require a restart to detect the new permissions.",
+            "onboarding.btn.quit_restart": "Quit & Restart",
+            "onboarding.btn.force_start": "Force Start (I'm sure)",
+            "onboarding.btn.open_settings": "Open System Settings",
+            "onboarding.instruction": "Go to Privacy & Security > Accessibility and enable TransPop",
+            "onboarding.btn.manual_confirm": "I have enabled permissions",
+            
+            "settings.title": "Settings",
+            "settings.language": "Language",
+            "settings.general": "General",
+            "settings.quit": "Quit TransPop",
+            
+            "main.detect_language": "Detect Language",
+            "main.placeholder.source": "Enter text to translate...",
+            "main.placeholder.target": "Translation will appear here...",
+            "main.copy": "Copy",
+            "main.clear": "Clear",
+            
+            "lang.en": "English",
+            "lang.zh-CN": "Chinese (Simplified)",
+            "lang.zh-TW": "Chinese (Traditional)",
+            "lang.ja": "Japanese",
+            "lang.ko": "Korean",
+            "lang.fr": "French",
+            "lang.de": "German",
+            "lang.es": "Spanish"
+        ],
+        // Chinese Simplified
+        "zh-CN": [
+            "app.name": "TransPop",
+            "onboarding.title": "需要权限",
+            "onboarding.desc": "TransPop 需要辅助功能权限来检测全局快捷键 (Cmd+C+C) 并读取选中的文本。",
+            "onboarding.granted": "权限已授予！",
+            "onboarding.restart_required": "需要重启",
+            "onboarding.restart_desc": "请重启应用以应用更改。",
+            "onboarding.restart_desc_macos": "macOS 可能需要重启才能检测到新权限。",
+            "onboarding.btn.quit_restart": "退出并重启",
+            "onboarding.btn.force_start": "强制启动 (我确定)",
+            "onboarding.btn.open_settings": "打开系统设置",
+            "onboarding.instruction": "前往 隐私与安全性 > 辅助功能 并启用 TransPop",
+            "onboarding.btn.manual_confirm": "我已经启用了权限",
+            
+            "settings.title": "设置",
+            "settings.language": "语言",
+            "settings.general": "常规",
+            "settings.quit": "退出 TransPop",
+            
+            "main.detect_language": "检测语言",
+            "main.placeholder.source": "输入要翻译的文本...",
+            "main.placeholder.target": "翻译结果将显示在这里...",
+            "main.copy": "复制",
+            "main.clear": "清除",
+            
+            "lang.en": "英语",
+            "lang.zh-CN": "中文 (简体)",
+            "lang.zh-TW": "中文 (繁体)",
+            "lang.ja": "日语",
+            "lang.ko": "韩语",
+            "lang.fr": "法语",
+            "lang.de": "德语",
+            "lang.es": "西班牙语"
+        ],
+        // Chinese Traditional
+        "zh-TW": [
+            "app.name": "TransPop",
+            "onboarding.title": "需要權限",
+            "onboarding.desc": "TransPop 需要輔助功能權限來檢測全局快捷鍵 (Cmd+C+C) 並讀取選中的文本。",
+            "onboarding.granted": "權限已授予！",
+            "onboarding.restart_required": "需要重啟",
+            "onboarding.restart_desc": "請重啟應用以應用更改。",
+            "onboarding.restart_desc_macos": "macOS 可能需要重啟才能檢測到新權限。",
+            "onboarding.btn.quit_restart": "退出並重啟",
+            "onboarding.btn.force_start": "強制啟動 (我確定)",
+            "onboarding.btn.open_settings": "打開系統設置",
+            "onboarding.instruction": "前往 隱私與安全性 > 輔助功能 並啟用 TransPop",
+            "onboarding.btn.manual_confirm": "我已經啟用了權限",
+            
+            "settings.title": "設置",
+            "settings.language": "語言",
+            "settings.general": "常規",
+            "settings.quit": "退出 TransPop",
+            
+            "main.detect_language": "檢測語言",
+            "main.placeholder.source": "輸入要翻譯的文本...",
+            "main.placeholder.target": "翻譯結果將顯示在這裡...",
+            "main.copy": "複製",
+            "main.clear": "清除",
+            
+            "lang.en": "英語",
+            "lang.zh-CN": "中文 (簡體)",
+            "lang.zh-TW": "中文 (繁體)",
+            "lang.ja": "日語",
+            "lang.ko": "韓語",
+            "lang.fr": "法語",
+            "lang.de": "德語",
+            "lang.es": "西班牙語"
+        ],
+        // Japanese
+        "ja": [
+            "app.name": "TransPop",
+            "onboarding.title": "権限が必要です",
+            "onboarding.desc": "TransPop は、グローバルショートカット (Cmd+C+C) を検出し、選択したテキストを読み取るためにアクセシビリティ権限が必要です。",
+            "onboarding.granted": "権限が付与されました！",
+            "onboarding.restart_required": "再起動が必要です",
+            "onboarding.restart_desc": "変更を適用するにはアプリを再起動してください。",
+            "onboarding.restart_desc_macos": "macOS は新しい権限を検出するために再起動が必要な場合があります。",
+            "onboarding.btn.quit_restart": "終了して再起動",
+            "onboarding.btn.force_start": "強制起動 (確認済み)",
+            "onboarding.btn.open_settings": "システム設定を開く",
+            "onboarding.instruction": "プライバシーとセキュリティ > アクセシビリティ に移動し、TransPop を有効にしてください",
+            "onboarding.btn.manual_confirm": "権限を有効にしました",
+            
+            "settings.title": "設定",
+            "settings.language": "言語",
+            "settings.general": "一般",
+            "settings.quit": "TransPop を終了",
+            
+            "main.detect_language": "言語を検出",
+            "main.placeholder.source": "翻訳するテキストを入力...",
+            "main.placeholder.target": "翻訳結果がここに表示されます...",
+            "main.copy": "コピー",
+            "main.clear": "クリア",
+            
+            "lang.en": "英語",
+            "lang.zh-CN": "中国語 (簡体字)",
+            "lang.zh-TW": "中国語 (繁体字)",
+            "lang.ja": "日本語",
+            "lang.ko": "韓国語",
+            "lang.fr": "フランス語",
+            "lang.de": "ドイツ語",
+            "lang.es": "スペイン語"
+        ],
+        // Korean
+        "ko": [
+            "app.name": "TransPop",
+            "onboarding.title": "권한 필요",
+            "onboarding.desc": "TransPop은 전역 단축키(Cmd+C+C)를 감지하고 선택한 텍스트를 읽으려면 손쉬운 사용 권한이 필요합니다.",
+            "onboarding.granted": "권한 허용됨!",
+            "onboarding.restart_required": "재시작 필요",
+            "onboarding.restart_desc": "변경 사항을 적용하려면 앱을 다시 시작하십시오.",
+            "onboarding.restart_desc_macos": "macOS에서 새 권한을 감지하려면 재시작이 필요할 수 있습니다.",
+            "onboarding.btn.quit_restart": "종료 및 재시작",
+            "onboarding.btn.force_start": "강제 시작 (확인함)",
+            "onboarding.btn.open_settings": "시스템 설정 열기",
+            "onboarding.instruction": "개인정보 보호 및 보안 > 손쉬운 사용으로 이동하여 TransPop을 활성화하십시오",
+            "onboarding.btn.manual_confirm": "권한을 활성화했습니다",
+            
+            "settings.title": "설정",
+            "settings.language": "언어",
+            "settings.general": "일반",
+            "settings.quit": "TransPop 종료",
+            
+            "main.detect_language": "언어 감지",
+            "main.placeholder.source": "번역할 텍스트 입력...",
+            "main.placeholder.target": "번역 결과가 여기에 표시됩니다...",
+            "main.copy": "복사",
+            "main.clear": "지우기",
+            
+            "lang.en": "영어",
+            "lang.zh-CN": "중국어 (간체)",
+            "lang.zh-TW": "중국어 (번체)",
+            "lang.ja": "일본어",
+            "lang.ko": "한국어",
+            "lang.fr": "프랑스어",
+            "lang.de": "독일어",
+            "lang.es": "스페인어"
+        ],
+        // French
+        "fr": [
+            "app.name": "TransPop",
+            "onboarding.title": "Permissions requises",
+            "onboarding.desc": "TransPop a besoin des permissions d'accessibilité pour détecter le raccourci global (Cmd+C+C) et lire le texte sélectionné.",
+            "onboarding.granted": "Permissions accordées !",
+            "onboarding.restart_required": "Redémarrage requis",
+            "onboarding.restart_desc": "Veuillez redémarrer l'application pour appliquer les changements.",
+            "onboarding.restart_desc_macos": "macOS peut nécessiter un redémarrage pour détecter les nouvelles permissions.",
+            "onboarding.btn.quit_restart": "Quitter et redémarrer",
+            "onboarding.btn.force_start": "Forcer le démarrage (Je suis sûr)",
+            "onboarding.btn.open_settings": "Ouvrir les réglages système",
+            "onboarding.instruction": "Allez dans Confidentialité et sécurité > Accessibilité et activez TransPop",
+            "onboarding.btn.manual_confirm": "J'ai activé les permissions",
+            
+            "settings.title": "Paramètres",
+            "settings.language": "Langue",
+            "settings.general": "Général",
+            "settings.quit": "Quitter TransPop",
+            
+            "main.detect_language": "Détecter la langue",
+            "main.placeholder.source": "Entrez le texte à traduire...",
+            "main.placeholder.target": "La traduction apparaîtra ici...",
+            "main.copy": "Copier",
+            "main.clear": "Effacer",
+            
+            "lang.en": "Anglais",
+            "lang.zh-CN": "Chinois (Simplifié)",
+            "lang.zh-TW": "Chinois (Traditionnel)",
+            "lang.ja": "Japonais",
+            "lang.ko": "Coréen",
+            "lang.fr": "Français",
+            "lang.de": "Allemand",
+            "lang.es": "Espagnol"
+        ],
+        // German
+        "de": [
+            "app.name": "TransPop",
+            "onboarding.title": "Berechtigungen erforderlich",
+            "onboarding.desc": "TransPop benötigt Zugriffsberechtigungen, um die globale Tastenkombination (Cmd+C+C) zu erkennen und den ausgewählten Text zu lesen.",
+            "onboarding.granted": "Berechtigungen erteilt!",
+            "onboarding.restart_required": "Neustart erforderlich",
+            "onboarding.restart_desc": "Bitte starten Sie die App neu, um die Änderungen zu übernehmen.",
+            "onboarding.restart_desc_macos": "macOS erfordert möglicherweise einen Neustart, um die neuen Berechtigungen zu erkennen.",
+            "onboarding.btn.quit_restart": "Beenden & Neustarten",
+            "onboarding.btn.force_start": "Start erzwingen (Ich bin sicher)",
+            "onboarding.btn.open_settings": "Systemeinstellungen öffnen",
+            "onboarding.instruction": "Gehen Sie zu Datenschutz & Sicherheit > Bedienungshilfen und aktivieren Sie TransPop",
+            "onboarding.btn.manual_confirm": "Ich habe die Berechtigungen aktiviert",
+            
+            "settings.title": "Einstellungen",
+            "settings.language": "Sprache",
+            "settings.general": "Allgemein",
+            "settings.quit": "TransPop beenden",
+            
+            "main.detect_language": "Sprache erkennen",
+            "main.placeholder.source": "Text zum Übersetzen eingeben...",
+            "main.placeholder.target": "Die Übersetzung erscheint hier...",
+            "main.copy": "Kopieren",
+            "main.clear": "Löschen",
+            
+            "lang.en": "Englisch",
+            "lang.zh-CN": "Chinesisch (Vereinfacht)",
+            "lang.zh-TW": "Chinesisch (Traditionell)",
+            "lang.ja": "Japanisch",
+            "lang.ko": "Koreanisch",
+            "lang.fr": "Französisch",
+            "lang.de": "Deutsch",
+            "lang.es": "Spanisch"
+        ],
+        // Spanish
+        "es": [
+            "app.name": "TransPop",
+            "onboarding.title": "Permisos requeridos",
+            "onboarding.desc": "TransPop necesita permisos de accesibilidad para detectar el atajo global (Cmd+C+C) y leer el texto seleccionado.",
+            "onboarding.granted": "¡Permisos concedidos!",
+            "onboarding.restart_required": "Reinicio requerido",
+            "onboarding.restart_desc": "Reinicie la aplicación para aplicar los cambios.",
+            "onboarding.restart_desc_macos": "macOS puede requerir un reinicio para detectar los nuevos permisos.",
+            "onboarding.btn.quit_restart": "Salir y reiniciar",
+            "onboarding.btn.force_start": "Forzar inicio (Estoy seguro)",
+            "onboarding.btn.open_settings": "Abrir configuración del sistema",
+            "onboarding.instruction": "Vaya a Privacidad y seguridad > Accesibilidad y habilite TransPop",
+            "onboarding.btn.manual_confirm": "He habilitado los permisos",
+            
+            "settings.title": "Configuración",
+            "settings.language": "Idioma",
+            "settings.general": "General",
+            "settings.quit": "Salir de TransPop",
+            
+            "main.detect_language": "Detectar idioma",
+            "main.placeholder.source": "Ingrese texto para traducir...",
+            "main.placeholder.target": "La traducción aparecerá aquí...",
+            "main.copy": "Copiar",
+            "main.clear": "Borrar",
+            
+            "lang.en": "Inglés",
+            "lang.zh-CN": "Chino (Simplificado)",
+            "lang.zh-TW": "Chino (Tradicional)",
+            "lang.ja": "Japonés",
+            "lang.ko": "Coreano",
+            "lang.fr": "Francés",
+            "lang.de": "Alemán",
+            "lang.es": "Español"
+        ]
+    ]
+    
+    func localizedString(_ key: String) -> String {
+        let dict = translations[language] ?? translations["en"]!
+        return dict[key] ?? key
+    }
+}
+
+// Helper extension for easier usage in SwiftUI
+extension String {
+    var localized: String {
+        return LocalizationManager.shared.localizedString(self)
+    }
+}

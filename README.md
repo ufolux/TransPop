@@ -56,6 +56,10 @@ cd macos
 swift build -c release
 ```
 
+## TODO
+
+- [] Settings
+- [] Multi-language support
 
 ## 🤝 Contributing
 
@@ -63,3 +67,4 @@ Found a bug? Want to add Klingon support? PRs are welcome! Just don't break the 
 
 ---
 *Made with ❤️ and too much caffeine by [Your Name/Team]*
+

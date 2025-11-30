@@ -3,6 +3,7 @@ import Cocoa
 
 struct ContentView: View {
     @ObservedObject var appState = AppState.shared
+    @ObservedObject var localization = LocalizationManager.shared
     
     var body: some View {
         Group {
@@ -19,6 +20,7 @@ struct ContentView: View {
 // MARK: - Mini View
 struct MiniView: View {
     @ObservedObject var appState = AppState.shared
+    @ObservedObject var localization = LocalizationManager.shared
     
     var body: some View {
         VStack(spacing: 0) {
@@ -105,23 +107,15 @@ struct MiniView: View {
     }
     
     func languageName(for code: String) -> String {
-        switch code {
-        case "en": return "English"
-        case "zh-CN": return "Chinese (S)"
-        case "zh-TW": return "Chinese (T)"
-        case "ja": return "Japanese"
-        case "ko": return "Korean"
-        case "fr": return "French"
-        case "de": return "German"
-        case "es": return "Spanish"
-        default: return code
-        }
+        return "lang.\(code)".localized
     }
 }
 
 // MARK: - Full View
 struct FullView: View {
     @ObservedObject var appState = AppState.shared
+    @ObservedObject var localization = LocalizationManager.shared
+    @State private var showSettings = false
     
     var body: some View {
         VStack(spacing: 0) {
@@ -134,11 +128,26 @@ struct FullView: View {
                         .padding(6)
                         .background(Circle().fill(LinearGradient(colors: [.blue, .purple], startPoint: .topLeading, endPoint: .bottomTrailing)))
                     
-                    Text("TransPop")
+                    Text("app.name".localized)
                         .font(.system(.title3, design: .rounded).weight(.bold))
                 }
                 
                 Spacer()
+                
+                Button(action: {
+                    showSettings.toggle()
+                }) {
+                    Image(systemName: "gearshape.fill")
+                        .font(.system(size: 16))
+                        .foregroundColor(.secondary)
+                        .padding(8)
+                        .background(Color.gray.opacity(0.1))
+                        .clipShape(Circle())
+                }
+                .buttonStyle(.plain)
+                .popover(isPresented: $showSettings) {
+                    SettingsView()
+                }
             }
             .padding(.top, 44)
             .padding(.horizontal, 20)
@@ -210,6 +219,7 @@ struct TranslationCard: View {
     var isLoading: Bool = false
     var onLangChange: () -> Void
     var onTextChange: (() -> Void)? = nil
+    @ObservedObject var localization = LocalizationManager.shared
     
     var body: some View {
         VStack(spacing: 0) {
@@ -218,16 +228,16 @@ struct TranslationCard: View {
                 Menu {
                     Picker("", selection: $selection) {
                         if isSource {
-                            Text("Detect Language").tag("auto")
+                            Text("main.detect_language".localized).tag("auto")
                         }
-                        Text("English").tag("en")
-                        Text("Chinese (Simplified)").tag("zh-CN")
-                        Text("Chinese (Traditional)").tag("zh-TW")
-                        Text("Japanese").tag("ja")
-                        Text("Korean").tag("ko")
-                        Text("French").tag("fr")
-                        Text("German").tag("de")
-                        Text("Spanish").tag("es")
+                        Text("lang.en".localized).tag("en")
+                        Text("lang.zh-CN".localized).tag("zh-CN")
+                        Text("lang.zh-TW".localized).tag("zh-TW")
+                        Text("lang.ja".localized).tag("ja")
+                        Text("lang.ko".localized).tag("ko")
+                        Text("lang.fr".localized).tag("fr")
+                        Text("lang.de".localized).tag("de")
+                        Text("lang.es".localized).tag("es")
                     }
                     .pickerStyle(.inline)
                     .labelsHidden()
@@ -265,7 +275,7 @@ struct TranslationCard: View {
                                 .foregroundColor(.secondary)
                         }
                         .buttonStyle(.plain)
-                        .help("Copy")
+                        .help("main.copy".localized)
                     }
                 } else if text.isEmpty {
                     Button(action: {
@@ -290,7 +300,7 @@ struct TranslationCard: View {
             ZStack(alignment: .topLeading) {
                 if isSource {
                     if text.isEmpty {
-                        Text("Enter text to translate...")
+                        Text("main.placeholder.source".localized)
                             .font(.system(.body, design: .rounded))
                             .foregroundColor(.secondary.opacity(0.5))
                             .padding(.horizontal, 20)
@@ -312,7 +322,7 @@ struct TranslationCard: View {
                         }
                 } else {
                     ScrollView {
-                        Text(text.isEmpty ? "Translation will appear here..." : text)
+                        Text(text.isEmpty ? "main.placeholder.target".localized : text)
                             .font(.system(.body, design: .rounded))
                             .lineSpacing(4)
                             .foregroundColor(text.isEmpty ? .secondary.opacity(0.5) : .primary)
@@ -330,18 +340,8 @@ struct TranslationCard: View {
     }
     
     func languageName(for code: String) -> String {
-        switch code {
-        case "auto": return "Detect Language"
-        case "en": return "English"
-        case "zh-CN": return "Chinese (S)"
-        case "zh-TW": return "Chinese (T)"
-        case "ja": return "Japanese"
-        case "ko": return "Korean"
-        case "fr": return "French"
-        case "de": return "German"
-        case "es": return "Spanish"
-        default: return code
-        }
+        if code == "auto" { return "main.detect_language".localized }
+        return "lang.\(code)".localized
     }
 }
 

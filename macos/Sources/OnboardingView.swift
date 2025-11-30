@@ -4,6 +4,7 @@ struct OnboardingView: View {
     @State private var isTrusted: Bool = false
     @State private var showManualRestart: Bool = false
     @State private var timer: Timer?
+    @ObservedObject var localization = LocalizationManager.shared
     
     var body: some View {
         VStack(spacing: 30) {
@@ -14,11 +15,11 @@ struct OnboardingView: View {
                 .foregroundColor(.blue)
             
             VStack(spacing: 10) {
-                Text("Permissions Required")
+                Text("onboarding.title".localized)
                     .font(.title)
                     .fontWeight(.bold)
                 
-                Text("TransPop needs Accessibility permissions to detect the global shortcut (Cmd+C+C) and read the selected text.")
+                Text("onboarding.desc".localized)
                     .multilineTextAlignment(.center)
                     .font(.body)
                     .foregroundColor(.secondary)
@@ -32,16 +33,16 @@ struct OnboardingView: View {
                             .foregroundColor(isTrusted ? .green : .orange)
                             .font(.system(size: 40))
                         
-                        Text(isTrusted ? "Permissions Granted!" : "Restart Required")
+                        Text(isTrusted ? "onboarding.granted".localized : "onboarding.restart_required".localized)
                             .font(.headline)
                             .foregroundColor(isTrusted ? .green : .orange)
                         
-                        Text(isTrusted ? "Please restart the app to apply changes." : "macOS may require a restart to detect the new permissions.")
+                        Text(isTrusted ? "onboarding.restart_desc".localized : "onboarding.restart_desc_macos".localized)
                             .font(.subheadline)
                             .foregroundColor(.secondary)
                             .multilineTextAlignment(.center)
                         
-                        Button("Quit & Restart") {
+                        Button("onboarding.btn.quit_restart".localized) {
                             if showManualRestart {
                                 UserDefaults.standard.set(true, forKey: "BypassPermissionCheck")
                                 UserDefaults.standard.synchronize()
@@ -52,7 +53,7 @@ struct OnboardingView: View {
                         .controlSize(.large)
                         
                         if !isTrusted {
-                            Button("Force Start (I'm sure)") {
+                            Button("onboarding.btn.force_start".localized) {
                                 UserDefaults.standard.set(true, forKey: "BypassPermissionCheck")
                                 NotificationCenter.default.post(name: NSNotification.Name("ForceStartApp"), object: nil)
                             }
@@ -63,19 +64,19 @@ struct OnboardingView: View {
                         }
                     }
                 } else {
-                    Button("Open System Settings") {
+                    Button("onboarding.btn.open_settings".localized) {
                         openSystemSettings()
                     }
                     .buttonStyle(.borderedProminent)
                     .controlSize(.large)
                     
-                    Text("Go to Privacy & Security > Accessibility and enable TransPop")
+                    Text("onboarding.instruction".localized)
                         .font(.caption)
                         .foregroundColor(.secondary)
                         .multilineTextAlignment(.center)
                         .padding(.horizontal)
                     
-                    Button("I have enabled permissions") {
+                    Button("onboarding.btn.manual_confirm".localized) {
                         // If system doesn't report true yet, we force the restart flow
                         // because macOS often requires restart anyway.
                         checkPermissions()
