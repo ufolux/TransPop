@@ -59,7 +59,8 @@ swift build -c release
 ## TODO
 
 - [] Settings
-- [] Multi-language support
+
+- [x] Multi-language support
 
 ## 🤝 Contributing
 
