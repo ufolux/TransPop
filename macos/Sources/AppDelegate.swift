@@ -8,9 +8,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Force app to be a regular app (shows in Dock, has UI)
         NSApp.setActivationPolicy(.regular)
         
-        // Check for Accessibility Permissions
-        checkAccessibilityPermissions()
-        
         // Setup Status Bar
         statusBarItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
         
@@ -25,12 +22,25 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         // Set App Icon
         if let iconPath = Bundle.module.path(forResource: "AppIcon", ofType: "png"),
-           let iconImage = NSImage(contentsOfFile: iconPath) {
+            let iconImage = NSImage(contentsOfFile: iconPath) {
             NSApp.applicationIconImage = iconImage
         }
         
+        // Check Permissions
+        let isTrusted = PermissionManager.shared.isTrusted()
+        var isBypassed = UserDefaults.standard.bool(forKey: "BypassPermissionCheck")
+        
+        // Debug: Check for Option key to reset bypass
+        // let event = NSAppleEventManager.shared().currentAppleEvent // Not needed for modifier check
+        if NSEvent.modifierFlags.contains(.option) {
+            print("Option key held: Resetting Bypass Flag")
+            UserDefaults.standard.removeObject(forKey: "BypassPermissionCheck")
+            isBypassed = false
+        }
+        
+        print("Startup Check: Trusted=\(isTrusted), Bypassed=\(isBypassed)")
+        
         // Create Window
-        let contentView = ContentView()
         window = NSWindow(
             contentRect: NSRect(x: 0, y: 0, width: 450, height: 600),
             styleMask: [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView],
@@ -41,19 +51,33 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.titleVisibility = .hidden
         window.isMovableByWindowBackground = true
         window.backgroundColor = .clear
-        window.contentView = NSHostingView(rootView: contentView)
+        window.isReleasedWhenClosed = false
         window.delegate = self
-        window.makeKeyAndOrderFront(nil)
         
-        // Setup Global Shortcut Listener
-        GlobalShortcutManager.shared.startListening()
+        if isTrusted || isBypassed {
+            window.contentView = NSHostingView(rootView: ContentView())
+            // Setup Global Shortcut Listener only if trusted or bypassed
+            GlobalShortcutManager.shared.startListening()
+        } else {
+            window.contentView = NSHostingView(rootView: OnboardingView())
+        }
+        
+        window.makeKeyAndOrderFront(nil)
         
         // Observers
         NotificationCenter.default.addObserver(self, selector: #selector(handleTranslationRequest(_:)), name: NSNotification.Name("TriggerTranslation"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(expandWindow), name: NSNotification.Name("ExpandWindow"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(forceStartApp), name: NSNotification.Name("ForceStartApp"), object: nil)
         
         // Activate app
         NSApp.activate(ignoringOtherApps: true)
+    }
+    
+    @objc func forceStartApp() {
+        print("Force starting app...")
+        window.contentView = NSHostingView(rootView: ContentView())
+        GlobalShortcutManager.shared.startListening()
+        window.makeKeyAndOrderFront(nil)
     }
     
     @objc func handleTranslationRequest(_ notification: Notification) {
@@ -145,20 +169,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         return true
     }
-    func checkAccessibilityPermissions() {
-        let options: NSDictionary = [kAXTrustedCheckOptionPrompt.takeUnretainedValue() as String : true]
-        let accessEnabled = AXIsProcessTrustedWithOptions(options)
-        
-        if !accessEnabled {
-            print("Access not enabled. Prompting user.")
-            let alert = NSAlert()
-            alert.messageText = "Permissions Required"
-            alert.informativeText = "TransPop needs Accessibility permissions to detect shortcuts. Please grant access in System Settings and then RESTART the app."
-            alert.alertStyle = .warning
-            alert.addButton(withTitle: "OK")
-            alert.runModal()
-        }
-    }
+
 }
 
 extension AppDelegate: NSWindowDelegate {

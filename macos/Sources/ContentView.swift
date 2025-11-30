@@ -95,6 +95,13 @@ struct MiniView: View {
         }
         .frame(minWidth: 300, minHeight: 200)
         .cornerRadius(12)
+        .background(
+            Button("") {
+                NSApp.keyWindow?.performClose(nil)
+            }
+            .keyboardShortcut(.cancelAction)
+            .opacity(0)
+        )
     }
     
     func languageName(for code: String) -> String {
