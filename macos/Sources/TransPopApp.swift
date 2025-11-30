@@ -9,5 +9,8 @@ struct TransPopApp: App {
         Settings {
             EmptyView()
         }
+        .commands {
+            CommandGroup(replacing: .appSettings) { }
+        }
     }
 }
