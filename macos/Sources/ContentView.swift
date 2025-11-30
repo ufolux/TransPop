@@ -253,6 +253,7 @@ struct TranslationCard: View {
                         if isLoading {
                             ProgressView()
                                 .scaleEffect(0.5)
+                                .frame(width: 16, height: 16)
                         }
                         
                         Button(action: {
@@ -301,6 +302,7 @@ struct TranslationCard: View {
                         .font(.system(.body, design: .rounded))
                         .lineSpacing(4)
                         .scrollContentBackground(.hidden)
+                        .scrollIndicators(.never)
                         .background(Color.clear)
                         .padding(.horizontal, 16)
                         .padding(.vertical, 16)
@@ -319,6 +321,7 @@ struct TranslationCard: View {
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .textSelection(.enabled)
                     }
+                    .scrollIndicators(.never)
                 }
             }
             .background(isSource ? Color(NSColor.textBackgroundColor) : Color(NSColor.controlBackgroundColor).opacity(0.3))

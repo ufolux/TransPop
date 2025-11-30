@@ -18,7 +18,10 @@ class AppState: ObservableObject {
     @AppStorage("targetLang") var targetLang: String = "en"
     
     func performTranslation() {
-        guard !sourceText.isEmpty else { return }
+        guard !sourceText.isEmpty else {
+            targetText = ""
+            return
+        }
         isTranslating = true
         
         TranslationService.shared.translate(text: sourceText, source: sourceLang, target: targetLang) { result in
