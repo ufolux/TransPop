@@ -21,7 +21,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         
         // Set App Icon
-        if let iconPath = Bundle.module.path(forResource: "AppIcon", ofType: "png"),
+        // Set App Icon
+        // Use Bundle.main because we are running in a manually created App Bundle
+        // and build_app.sh puts AppIcon.icns in Contents/Resources.
+        // Note: NSApp.applicationIconImage is usually set automatically from Info.plist,
+        // but we can force it here if needed.
+        // Since we set CFBundleIconFile in Info.plist, we might not even need this code,
+        // but if we keep it, we must use Bundle.main.
+        if let iconPath = Bundle.main.path(forResource: "AppIcon", ofType: "icns"),
             let iconImage = NSImage(contentsOfFile: iconPath) {
             NSApp.applicationIconImage = iconImage
         }
