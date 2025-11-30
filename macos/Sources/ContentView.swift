@@ -26,11 +26,7 @@ struct MiniView: View {
         VStack(spacing: 0) {
             // Header
             HStack {
-                Image(systemName: "character.bubble.fill")
-                    .font(.system(size: 14, weight: .bold))
-                    .foregroundColor(.white)
-                    .padding(6)
-                    .background(Circle().fill(Color.accentColor))
+                LogoView(size: 28)
                 
                 Menu {
                     Picker("", selection: $appState.targetLang) {
@@ -122,11 +118,7 @@ struct FullView: View {
             // Header
             HStack {
                 HStack(spacing: 8) {
-                    Image(systemName: "character.bubble.fill")
-                        .font(.title3)
-                        .foregroundColor(.white)
-                        .padding(6)
-                        .background(Circle().fill(LinearGradient(colors: [.blue, .purple], startPoint: .topLeading, endPoint: .bottomTrailing)))
+                    LogoView(size: 32)
                     
                     Text("app.name".localized)
                         .font(.system(.title3, design: .rounded).weight(.bold))
@@ -361,6 +353,39 @@ struct VisualEffectView: NSViewRepresentable {
     func updateNSView(_ nsView: NSVisualEffectView, context: Context) {
         nsView.material = material
         nsView.blendingMode = blendingMode
+    }
+}
+
+struct LogoView: View {
+    @Environment(\.colorScheme) var colorScheme
+    var size: CGFloat = 32
+    
+    var body: some View {
+        Group {
+            if let image = nsImage(for: colorScheme) {
+                Image(nsImage: image)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: size, height: size)
+            } else {
+                // Fallback
+                Image(systemName: "character.bubble.fill")
+                    .font(.system(size: size * 0.6))
+                    .foregroundColor(.white)
+                    .padding(size * 0.2)
+                    .background(Circle().fill(LinearGradient(colors: [.blue, .purple], startPoint: .topLeading, endPoint: .bottomTrailing)))
+                    .frame(width: size, height: size)
+            }
+        }
+    }
+    
+    func nsImage(for scheme: ColorScheme) -> NSImage? {
+        let name = scheme == .dark ? "dark" : "light"
+        if let path = Bundle.main.path(forResource: name, ofType: "png"),
+           let image = NSImage(contentsOfFile: path) {
+            return image
+        }
+        return nil
     }
 }
 

@@ -9,6 +9,18 @@ CONTENTS_DIR="$APP_BUNDLE/Contents"
 MACOS_DIR="$CONTENTS_DIR/MacOS"
 RESOURCES_DIR="$CONTENTS_DIR/Resources"
 ICON_SOURCE="Sources/Resources/AppIcon.png"
+ICON_LIGHT="Sources/Resources/light.png"
+ICON_DARK="Sources/Resources/dark.png"
+
+
+echo "🔄 Syncing Icons..."
+# Use the pre-generated icon from icon/AppIcon
+cp ../icon/AppIcon.png Sources/Resources/AppIcon.png
+
+# Process Status Bar Icons (Make them square)
+echo "   Processing Status Bar Icons..."
+swift process_statusbar_icon.swift ../icon/light.png Sources/Resources/light.png
+swift process_statusbar_icon.swift ../icon/dark.png Sources/Resources/dark.png
 
 echo "🚀 Building $APP_NAME..."
 swift build -c release
@@ -59,14 +71,25 @@ if [ -f "$ICON_SOURCE" ]; then
     sips -z 256 256   "$ICON_SOURCE" --out "$ICONSET_DIR/icon_128x128@2x.png" > /dev/null
     sips -z 256 256   "$ICON_SOURCE" --out "$ICONSET_DIR/icon_256x256.png" > /dev/null
     sips -z 512 512   "$ICON_SOURCE" --out "$ICONSET_DIR/icon_256x256@2x.png" > /dev/null
-    sips -z 512 512   "$ICON_SOURCE" --out "$ICONSET_DIR/icon_512x512.png" > /dev/null
+    sips -z 512 512   "$ICONSET_DIR/icon_512x512.png" > /dev/null
     sips -z 1024 1024 "$ICON_SOURCE" --out "$ICONSET_DIR/icon_512x512@2x.png" > /dev/null
     
     iconutil -c icns "$ICONSET_DIR" -o "$RESOURCES_DIR/AppIcon.icns"
     rm -rf "$ICONSET_DIR"
     echo "✅ Icon created."
+fi
+
+echo "🖼️  Copying Status Bar Icons..."
+if [ -f "$ICON_LIGHT" ]; then
+    cp "$ICON_LIGHT" "$RESOURCES_DIR/"
 else
-    echo "⚠️  Warning: $ICON_SOURCE not found. App will have no icon."
+    echo "⚠️  Warning: $ICON_LIGHT not found."
+fi
+
+if [ -f "$ICON_DARK" ]; then
+    cp "$ICON_DARK" "$RESOURCES_DIR/"
+else
+    echo "⚠️  Warning: $ICON_DARK not found."
 fi
 
 echo "📦 Copying Executable..."

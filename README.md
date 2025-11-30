@@ -59,7 +59,8 @@ swift build -c release
 ## TODO
 
 - [] Settings
-
+- [] Light / Dark mode
+- [] Support for ollama / OpenAI API
 - [x] Multi-language support
 
 ## 🤝 Contributing

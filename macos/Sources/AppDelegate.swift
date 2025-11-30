@@ -12,12 +12,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         statusBarItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
         
         if let button = statusBarItem.button {
-            button.image = NSImage(systemSymbolName: "character.bubble", accessibilityDescription: "TransPop")
-            // Fallback if image fails (though character.bubble is standard)
-            if button.image == nil {
-                button.title = "T"
-            }
+            // Initial Icon Setup
+            updateStatusBarIcon()
+            
             button.action = #selector(toggleWindow(_:))
+            
+            // Observe Appearance Changes
+            NSApp.addObserver(self, forKeyPath: "effectiveAppearance", options: [.new], context: nil)
         }
         
         // Set App Icon
@@ -175,6 +176,35 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.makeKeyAndOrderFront(nil)
         
         return true
+    }
+
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == "effectiveAppearance" {
+            updateStatusBarIcon()
+        }
+    }
+
+    func updateStatusBarIcon() {
+        guard let button = statusBarItem.button else { return }
+        
+        let appearance = NSApp.effectiveAppearance
+        let isDark = appearance.bestMatch(from: [.darkAqua, .aqua]) == .darkAqua
+        
+        let iconName = isDark ? "dark" : "light"
+        
+        // Try to load from bundle resources
+        if let iconPath = Bundle.main.path(forResource: iconName, ofType: "png"),
+           let image = NSImage(contentsOfFile: iconPath) {
+            // Resize to standard status bar size (usually 18x18 or 22x22)
+            image.size = NSSize(width: 18, height: 18)
+            image.isTemplate = false // Keep original colors
+            button.image = image
+            button.title = "" // Clear title if image exists
+        } else {
+            // Fallback
+            print("⚠️ Status bar icon not found: \(iconName)")
+            button.image = NSImage(systemSymbolName: "character.bubble", accessibilityDescription: "TransPop")
+        }
     }
 
 }
