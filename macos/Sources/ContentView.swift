@@ -365,6 +365,8 @@ struct LogoView: View {
             if let image = nsImage(for: colorScheme) {
                 Image(nsImage: image)
                     .resizable()
+                    .interpolation(.high)
+                    .antialiased(true)
                     .aspectRatio(contentMode: .fit)
                     .frame(width: size, height: size)
             } else {
