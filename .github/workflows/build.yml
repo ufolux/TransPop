@@ -21,20 +21,17 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: "npm"
-
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-
-      - name: Install dependencies
-        run: npm install
 
       - name: Build macOS App
-        run: npm run build:mac
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cd macos
+          chmod +x build_app.sh
+          ./build_app.sh
+
+      - name: Zip Application
+        run: |
+          cd macos
+          zip -r TransPop.zip TransPop.app
 
       - name: Get Version
         id: get_version
@@ -62,7 +59,7 @@ jobs:
         with:
           tag_name: v${{ env.VERSION }}
           name: Release v${{ env.VERSION }}
-          files: dist/*.dmg
+          files: macos/TransPop.zip
           draft: false
           prerelease: false
         env:

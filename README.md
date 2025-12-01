@@ -1,7 +1,10 @@
 # TransPop 🚀
 > **Make Translation Simple Again** ✨
 
-<img width="678" height="411" alt="image" src="https://github.com/user-attachments/assets/1052df15-d7e2-49ba-bed1-f74c965ae3d2" />
+<img width="562" height="712" alt="image" src="https://github.com/user-attachments/assets/43272a4f-4982-4e97-b14e-e80d5a2f558c" />
+
+
+<img width="50%" height="50%" alt="image" src="https://github.com/user-attachments/assets/2bc4fced-e95d-49c0-a9c7-b57e8b59f4e3" />
 
 
 Tired of the `Cmd+C` -> Open Browser -> Type "Google Translate" -> `Cmd+V` -> Cry -> Repeat cycle? 
@@ -23,11 +26,11 @@ Because life is too short to manually copy-paste text into a browser tab.
 
 ## 🛠 Tech Stack (The Nerd Stuff)
 
-Built with the "Holy Trinity" of modern desktop dev:
-*   **Electron**: Because RAM is meant to be used. 🐏
-*   **React**: Because we love components. ⚛️
-*   **TypeScript**: Because we hate runtime errors. 🛡️
-*   **TailwindCSS**: Because writing CSS files is so 2015. 💅
+Built with pure, unadulterated **Swift** and **SwiftUI**. No Electron. No Chrome instances eating your RAM. Just pure, native performance. 🍏
+
+*   **SwiftUI**: Declarative UI that looks good on macOS.
+*   **AppKit**: For the nitty-gritty window management and status bar magic.
+*   **Combine**: For reactive state management.
 
 ## 🏃‍♂️ How to Run
 
@@ -37,27 +40,28 @@ Want to run this bad boy locally? Here you go:
 # 1. Clone the repo (duh)
 git clone https://github.com/ufolux/TransPop.git
 
-# 2. Install dependencies (grab a coffee ☕️)
-npm install
+# 2. Go to the macos folder
+cd macos
 
-# 3. Start the magic ✨
-npm run dev
+# 3. Run it! 🚀
+swift run
 ```
 
 ## 📦 Build
 
-Want to share it with your grandma? Build it:
+Want to build a release version?
 
 ```bash
-# For macOS (The superior OS, obviously)
-npm run build:mac
-
-# For Windows (If you must)
-npm run build:win
-
-# For Linux (You know what you're doing)
-npm run build:linux
+cd macos
+swift build -c release
 ```
+
+## TODO
+
+- [] Settings
+- [] Light / Dark mode
+- [] Support for ollama / OpenAI API
+- [x] Multi-language support
 
 ## 🤝 Contributing
 
@@ -65,3 +69,4 @@ Found a bug? Want to add Klingon support? PRs are welcome! Just don't break the 
 
 ---
 *Made with ❤️ and too much caffeine by [Your Name/Team]*
+
