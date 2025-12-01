@@ -83,6 +83,10 @@ if [ -f "$ICON_SOURCE" ]; then
     echo "✅ Icon created."
 fi
 
+echo "📦 Copying Status Bar Icons..."
+cp Sources/Resources/light.png "$RESOURCES_DIR/"
+cp Sources/Resources/dark.png "$RESOURCES_DIR/"
+
 echo "📦 Copying Resource Bundle..."
 # Debug: List build directory
 echo "Debug: Listing .build/release content:"
