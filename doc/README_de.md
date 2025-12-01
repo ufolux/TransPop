@@ -88,11 +88,11 @@ Greife über das Zahnrad-Symbol in der Vollansicht auf die **Einstellungen** zu.
 *   **OpenAI Kompatible Einstellungen**:
     *   **API URL**: Standard ist `http://127.0.0.1:11434/v1/chat/completions` (perfekt für Ollama).
     *   **API Key**: Optional für lokale LLMs.
-    *   **Modell**: Gib den Modellnamen an (z.B. `llama3`, `gpt-4o`).
+    *   **Modell**: Gib den Modellnamen an (z.B. `llama3`, `gpt-4o`, `zongwei/gemma3-translator:1b` Ich habe diesen ausprobiert, funktioniert perfekt für mich).
 
 ## 🤝 Mitwirken
 
 Einen Fehler gefunden? Willst du Klingonisch-Unterstützung hinzufügen? PRs sind willkommen! Mach nur nicht die "Double Tap" Funktion kaputt, sonst gibt es einen Aufstand.
 
 ---
-*Gemacht mit ❤️ und zu viel Koffein von [Your Name/Team]*
+*Gemacht mit ❤️ und zu viel Koffein von ufolux*

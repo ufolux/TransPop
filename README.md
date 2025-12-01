@@ -94,5 +94,5 @@ Access the **Settings** via the gear icon in the Full View.
 
 ## 🤝 Contributing
 
-*Made with ❤️ and too much caffeine by [Your Name/Team]*
+*Made with ❤️ and too much caffeine by ufolux*
 

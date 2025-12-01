@@ -88,11 +88,11 @@ Accédez aux **Paramètres** via l'icône d'engrenage dans la Vue Complète.
 *   **Paramètres Compatible OpenAI** :
     *   **URL de l'API** : La valeur par défaut est `http://127.0.0.1:11434/v1/chat/completions` (parfait pour Ollama).
     *   **Clé API** : Optionnel pour les LLM locaux.
-    *   **Modèle** : Spécifier le nom du modèle (par ex., `llama3`, `gpt-4o`).
+    *   **Modèle** : Spécifier le nom du modèle (par ex., `llama3`, `gpt-4o`, `zongwei/gemma3-translator:1b` J'ai essayé celui-ci, il fonctionne parfaitement pour moi).
 
 ## 🤝 Contribuer
 
 Trouvé un bug ? Vous voulez ajouter le support du Klingon ? Les PR sont les bienvenues ! Ne cassez juste pas la fonctionnalité "Double Tap", ou c'est l'émeute.
 
 ---
-*Fait avec ❤️ et trop de caféine par [Your Name/Team]*
+*Fait avec ❤️ et trop de caféine par ufolux*

@@ -88,11 +88,11 @@ swift build -c release
 *   **OpenAI 兼容設置**:
     *   **API URL**: 默認為 `http://127.0.0.1:11434/v1/chat/completions` (完美適配 Ollama)。
     *   **API Key**: 本地 LLM 可選。
-    *   **模型**: 指定模型名稱 (例如 `llama3`, `gpt-4o`)。
+    *   **模型**: 指定模型名稱 (例如 `llama3`, `gpt-4o`, `zongwei/gemma3-translator:1b` 我試過這個，完美工作)。
 
 ## 🤝 貢獻
 
 發現 bug？想添加克林貢語支持？歡迎 PR！只要別破壞 "雙擊" 功能，否則我們會暴動。
 
 ---
-*由 [Your Name/Team] 用 ❤️ 和過量的咖啡因製作*
+*由 ufolux 用 ❤️ 和過量的咖啡因製作*

@@ -88,11 +88,11 @@ swift build -c release
 *   **OpenAI 호환 설정**:
     *   **API URL**: 기본값은 `http://127.0.0.1:11434/v1/chat/completions` (Ollama에 완벽).
     *   **API Key**: 로컬 LLM의 경우 선택 사항입니다.
-    *   **모델**: 모델 이름을 지정합니다 (예: `llama3`, `gpt-4o`).
+    *   **모델**: 모델 이름을 지정합니다 (예: `llama3`, `gpt-4o`, `zongwei/gemma3-translator:1b` 제가 시도해 봤는데 완벽하게 작동합니다).
 
 ## 🤝 기여
 
 버그를 발견하셨나요? 클링온어 지원을 추가하고 싶으신가요? PR은 환영입니다! 단지 "더블 탭" 기능을 망가뜨리지만 마세요. 그렇지 않으면 폭동이 일어날 겁니다.
 
 ---
-*❤️와 과다한 카페인으로 제작됨 by [Your Name/Team]*
+*❤️와 과다한 카페인으로 제작됨 by ufolux*
