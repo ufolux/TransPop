@@ -95,4 +95,7 @@ fi
 echo "📦 Copying Executable..."
 cp "$BUILD_DIR/$APP_NAME" "$MACOS_DIR/"
 
+echo "🔏 Signing App..."
+codesign --force --deep -s - "$APP_BUNDLE"
+
 echo "✅ Build Complete: $APP_BUNDLE"
