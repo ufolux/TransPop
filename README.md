@@ -21,7 +21,7 @@ Because life is too short to manually copy-paste text into a browser tab.
 
 *   **The "Double Tap" Magic**: Press `Cmd+C` twice (Double Copy). Boom! Translation pops up. It's like summoning a genie, but for languages. 🧞‍♂️
 
-<img width="509" height="291" alt="image" src="https://github.com/user-attachments/assets/1f2bf6f8-53c1-4f6e-ac1c-f43e2fd4ee02" />
+    <img width="50%" height="50%" alt="image" src="https://github.com/user-attachments/assets/da48497e-7d73-43cc-a3e2-40d9368688d2" />
 
 *   **Mini Popup Mode**: The window appears *right where your cursor is*. We call it "Ninja Mode". You don't even have to move your mouse. 🥷
 *   **Expandable UI**: Need more space? Click the expand button (arrows icon) in the Mini UI to switch to a full-sized window.
