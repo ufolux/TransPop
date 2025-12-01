@@ -32,7 +32,7 @@ class AppState: ObservableObject {
                     self.targetText = response.text
                 case .failure(let error):
                     print("Translation error: \(error)")
-                    self.targetText = "[Error] Translation failed"
+                    self.targetText = "[Error] \(error.localizedDescription)"
                 }
             }
         }

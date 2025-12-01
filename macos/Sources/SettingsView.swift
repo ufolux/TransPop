@@ -3,6 +3,13 @@ import SwiftUI
 struct SettingsView: View {
     @ObservedObject var localization = LocalizationManager.shared
     @AppStorage("appTheme") private var appTheme: String = "system"
+    @AppStorage("closeAction") private var closeAction: String = "prompt"
+    
+    // API Settings
+    @AppStorage("apiProvider") private var apiProvider: String = "googleFree"
+    @AppStorage("apiUrl") private var apiUrl: String = "http://127.0.0.1:11434/v1/chat/completions"
+    @AppStorage("apiKey") private var apiKey: String = ""
+    @AppStorage("modelName") private var modelName: String = "llama3"
     
     var body: some View {
         VStack(spacing: 0) {
@@ -65,6 +72,102 @@ struct SettingsView: View {
                             }
                             .padding()
                             .background(Color(NSColor.controlBackgroundColor))
+                            
+                            Divider()
+                                .padding(.leading, 16)
+                            
+                            // Close Action Picker
+                            HStack {
+                                Label("When closing window", systemImage: "xmark.circle")
+                                    .foregroundColor(.primary)
+                                Spacer()
+                                Picker("", selection: $closeAction) {
+                                    Text("Ask every time").tag("prompt")
+                                    Text("Minimize to tray").tag("minimize")
+                                    Text("Quit application").tag("quit")
+                                }
+                                .pickerStyle(.menu)
+                                .frame(width: 140)
+                            }
+                            .padding()
+                            .background(Color(NSColor.controlBackgroundColor))
+                        }
+                        .cornerRadius(10)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(Color.gray.opacity(0.2), lineWidth: 1)
+                        )
+                    }
+                    
+                    // Translation API Section
+                    VStack(alignment: .leading, spacing: 12) {
+                        Text("Translation API")
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
+                            .padding(.horizontal, 4)
+                        
+                        VStack(spacing: 0) {
+                            // Provider Picker
+                            HStack {
+                                Label("Provider", systemImage: "server.rack")
+                                    .foregroundColor(.primary)
+                                Spacer()
+                                Picker("", selection: $apiProvider) {
+                                    Text("Google (Free)").tag("googleFree")
+                                    Text("OpenAI Compatible").tag("openaiCompatible")
+                                }
+                                .pickerStyle(.menu)
+                                .frame(width: 160)
+                            }
+                            .padding()
+                            .background(Color(NSColor.controlBackgroundColor))
+                            
+                            if apiProvider == "openaiCompatible" {
+                                Divider()
+                                    .padding(.leading, 16)
+                                
+                                // API URL
+                                HStack {
+                                    Label("API URL", systemImage: "link")
+                                        .foregroundColor(.primary)
+                                    Spacer()
+                                    TextField("http://127.0.0.1:11434/v1/chat/completions", text: $apiUrl)
+                                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                                        .frame(width: 200)
+                                }
+                                .padding()
+                                .background(Color(NSColor.controlBackgroundColor))
+                                
+                                Divider()
+                                    .padding(.leading, 16)
+                                
+                                // API Key
+                                HStack {
+                                    Label("API Key", systemImage: "key")
+                                        .foregroundColor(.primary)
+                                    Spacer()
+                                    SecureField("Optional for local", text: $apiKey)
+                                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                                        .frame(width: 200)
+                                }
+                                .padding()
+                                .background(Color(NSColor.controlBackgroundColor))
+                                
+                                Divider()
+                                    .padding(.leading, 16)
+                                
+                                // Model Name
+                                HStack {
+                                    Label("Model", systemImage: "cube")
+                                        .foregroundColor(.primary)
+                                    Spacer()
+                                    TextField("gpt-3.5-turbo", text: $modelName)
+                                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                                        .frame(width: 200)
+                                }
+                                .padding()
+                                .background(Color(NSColor.controlBackgroundColor))
+                            }
                         }
                         .cornerRadius(10)
                         .overlay(
@@ -77,7 +180,7 @@ struct SettingsView: View {
                 .padding()
             }
         }
-        .frame(width: 400, height: 240)
+        .frame(width: 400, height: 400)
         .background(Color(NSColor.windowBackgroundColor))
     }
 }

@@ -70,7 +70,19 @@ struct MiniView: View {
                 
                 Spacer()
                 
-                Spacer()
+                // Expand Button
+                Button(action: {
+                    NotificationCenter.default.post(name: NSNotification.Name("ExpandWindow"), object: nil)
+                }) {
+                    Image(systemName: "arrow.up.left.and.arrow.down.right")
+                        .font(.system(size: 12, weight: .bold))
+                        .foregroundColor(.secondary)
+                        .padding(6)
+                        .background(Color.gray.opacity(0.1))
+                        .clipShape(Circle())
+                }
+                .buttonStyle(.plain)
+                .help("Expand to Full View")
             }
             .padding(.horizontal, 12)
             .padding(.top, 40)
