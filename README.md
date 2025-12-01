@@ -1,11 +1,15 @@
 # TransPop 🚀
 > **Make Translation Simple Again** ✨
 
+**Only support macOS now, will add other platform support later**
+
 [简体中文](doc/README_zh-CN.md) | [繁體中文](doc/README_zh-TW.md) | [日本語](doc/README_ja.md) | [한국어](doc/README_ko.md) | [Français](doc/README_fr.md) | [Deutsch](doc/README_de.md) | [Español](doc/README_es.md)
 
 <img width="562" height="712" alt="image" src="https://github.com/user-attachments/assets/c6787432-79fd-4f2f-8908-926065c8289c" />
 
 Tired of the `Cmd+C` -> Open Browser -> Type "Google Translate" -> `Cmd+V` -> Cry -> Repeat cycle? 
+
+Or a 300 MB download just to translate a few words?
 
 Yeah, us too. That's why we built **TransPop**. It's like having a Babel fish in your menu bar, but less slimy.
 
@@ -16,6 +20,9 @@ Because life is too short to manually copy-paste text into a browser tab.
 ### 🌟 Features that will make you go "Wow"
 
 *   **The "Double Tap" Magic**: Press `Cmd+C` twice (Double Copy). Boom! Translation pops up. It's like summoning a genie, but for languages. 🧞‍♂️
+
+<img width="509" height="291" alt="image" src="https://github.com/user-attachments/assets/1f2bf6f8-53c1-4f6e-ac1c-f43e2fd4ee02" />
+
 *   **Mini Popup Mode**: The window appears *right where your cursor is*. We call it "Ninja Mode". You don't even have to move your mouse. 🥷
 *   **Expandable UI**: Need more space? Click the expand button (arrows icon) in the Mini UI to switch to a full-sized window.
 *   **Tray Icon**: We live in your status bar. Always watching. Always waiting. (In a non-creepy way). 👀
@@ -25,6 +32,8 @@ Because life is too short to manually copy-paste text into a browser tab.
 *   **Language Swap**: One click to reverse the flow. `English -> Chinese` becomes `Chinese -> English`. Mind = Blown. 🤯
 *   **Smart Close**: Choose whether to minimize to tray or quit the app when closing the window. You can even tell it to "Do not ask again".
 *   **Dark Mode**: Because we are developers and light mode burns our retinas. 😎
+
+*   **Tiny Size**: The app is only 1.8 MB. No need to download 300 MB of Electron just to translate a few words.
 
 ## 🛠 Tech Stack (The Nerd Stuff)
 
