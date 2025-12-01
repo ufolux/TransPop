@@ -89,7 +89,33 @@ echo "Debug: Listing .build/release content:"
 ls -la "$BUILD_DIR" || echo "Warning: Could not list $BUILD_DIR"
 
 if [ -d "$BUILD_DIR/TransPop_TransPop.bundle" ]; then
+    # Copy to Resources (Standard macOS location)
     cp -r "$BUILD_DIR/TransPop_TransPop.bundle" "$RESOURCES_DIR/"
+    
+    # Create symlink in MacOS directory to satisfy Bundle.module
+    ln -s "../Resources/TransPop_TransPop.bundle" "$MACOS_DIR/TransPop_TransPop.bundle"
+    
+    # Inject Info.plist into the bundle to make it signable
+    cat > "$RESOURCES_DIR/TransPop_TransPop.bundle/Info.plist" <<EOF
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>CFBundleIdentifier</key>
+    <string>com.ufolux.TransPop.resources</string>
+    <key>CFBundleInfoDictionaryVersion</key>
+    <string>6.0</string>
+    <key>CFBundleName</key>
+    <string>TransPop_TransPop</string>
+    <key>CFBundlePackageType</key>
+    <string>BNDL</string>
+    <key>CFBundleShortVersionString</key>
+    <string>1.0</string>
+    <key>CFBundleVersion</key>
+    <string>1</string>
+</dict>
+</plist>
+EOF
 else
     echo "❌ Error: TransPop_TransPop.bundle not found in build directory."
     echo "Debug: Listing all bundles in .build:"
@@ -101,6 +127,8 @@ echo "📦 Copying Executable..."
 cp "$BUILD_DIR/$APP_NAME" "$MACOS_DIR/"
 
 echo "🔏 Signing App..."
+# Sign the bundle in Resources
+codesign --force --deep -s - "$RESOURCES_DIR/TransPop_TransPop.bundle"
 codesign --force --deep -s - "$APP_BUNDLE"
 
 echo "✅ Build Complete: $APP_BUNDLE"
