@@ -218,6 +218,16 @@ extension AppDelegate: NSWindowDelegate {
             return false
         }
         
+        let closeAction = UserDefaults.standard.string(forKey: "closeAction") ?? "prompt"
+        
+        if closeAction == "minimize" {
+            sender.orderOut(nil)
+            return false
+        } else if closeAction == "quit" {
+            NSApp.terminate(nil)
+            return true
+        }
+        
         let alert = NSAlert()
         alert.messageText = "Close TransPop?"
         alert.informativeText = "Do you want to quit the application or minimize it to the status bar?"
@@ -226,13 +236,23 @@ extension AppDelegate: NSWindowDelegate {
         alert.addButton(withTitle: "Cancel")
         alert.alertStyle = .warning
         
+        alert.showsSuppressionButton = true
+        alert.suppressionButton?.title = "Do not ask again"
+        
         let response = alert.runModal()
+        let rememberChoice = alert.suppressionButton?.state == .on
         
         switch response {
         case .alertFirstButtonReturn: // Minimize
+            if rememberChoice {
+                UserDefaults.standard.set("minimize", forKey: "closeAction")
+            }
             sender.orderOut(nil)
             return false
         case .alertSecondButtonReturn: // Quit
+            if rememberChoice {
+                UserDefaults.standard.set("quit", forKey: "closeAction")
+            }
             NSApp.terminate(nil)
             return true
         default: // Cancel

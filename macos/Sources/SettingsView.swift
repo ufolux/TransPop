@@ -3,6 +3,7 @@ import SwiftUI
 struct SettingsView: View {
     @ObservedObject var localization = LocalizationManager.shared
     @AppStorage("appTheme") private var appTheme: String = "system"
+    @AppStorage("closeAction") private var closeAction: String = "prompt"
     
     // API Settings
     @AppStorage("apiProvider") private var apiProvider: String = "googleFree"
@@ -65,6 +66,25 @@ struct SettingsView: View {
                                     Text("theme.system".localized).tag("system")
                                     Text("theme.light".localized).tag("light")
                                     Text("theme.dark".localized).tag("dark")
+                                }
+                                .pickerStyle(.menu)
+                                .frame(width: 140)
+                            }
+                            .padding()
+                            .background(Color(NSColor.controlBackgroundColor))
+                            
+                            Divider()
+                                .padding(.leading, 16)
+                            
+                            // Close Action Picker
+                            HStack {
+                                Label("When closing window", systemImage: "xmark.circle")
+                                    .foregroundColor(.primary)
+                                Spacer()
+                                Picker("", selection: $closeAction) {
+                                    Text("Ask every time").tag("prompt")
+                                    Text("Minimize to tray").tag("minimize")
+                                    Text("Quit application").tag("quit")
                                 }
                                 .pickerStyle(.menu)
                                 .frame(width: 140)
