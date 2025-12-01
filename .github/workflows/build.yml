@@ -31,7 +31,7 @@ jobs:
       - name: Zip Application
         run: |
           cd macos
-          zip -r TransPop.zip TransPop.app
+          zip -yr TransPop.zip TransPop.app
 
       - name: Get Version
         id: get_version
