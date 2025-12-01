@@ -26,7 +26,20 @@ jobs:
         run: |
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
-          npm version patch -m "chore: bump version to %s [skip ci]"
+
+          COMMIT_MSG="${{ github.event.head_commit.message }}"
+
+          if [[ "$COMMIT_MSG" == *"#major"* ]]; then
+            echo "Bumping MAJOR version..."
+            npm version major -m "chore: bump version to %s [skip ci]"
+          elif [[ "$COMMIT_MSG" == *"#minor"* ]]; then
+            echo "Bumping MINOR version..."
+            npm version minor -m "chore: bump version to %s [skip ci]"
+          else
+            echo "Bumping PATCH version..."
+            npm version patch -m "chore: bump version to %s [skip ci]"
+          fi
+
           git push
           echo "VERSION=$(node -p "require('./package.json').version")" >> $GITHUB_ENV
 
