@@ -83,17 +83,11 @@ if [ -f "$ICON_SOURCE" ]; then
     echo "✅ Icon created."
 fi
 
-echo "🖼️  Copying Status Bar Icons..."
-if [ -f "$ICON_LIGHT" ]; then
-    cp "$ICON_LIGHT" "$RESOURCES_DIR/"
+echo "📦 Copying Resource Bundle..."
+if [ -d "$BUILD_DIR/TransPop_TransPop.bundle" ]; then
+    cp -r "$BUILD_DIR/TransPop_TransPop.bundle" "$RESOURCES_DIR/"
 else
-    echo "⚠️  Warning: $ICON_LIGHT not found."
-fi
-
-if [ -f "$ICON_DARK" ]; then
-    cp "$ICON_DARK" "$RESOURCES_DIR/"
-else
-    echo "⚠️  Warning: $ICON_DARK not found."
+    echo "⚠️  Warning: TransPop_TransPop.bundle not found in build directory."
 fi
 
 echo "📦 Copying Executable..."
