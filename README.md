@@ -1,13 +1,9 @@
 # TransPop 🚀
 > **Make Translation Simple Again** ✨
 
+[简体中文](doc/README_zh-CN.md) | [繁體中文](doc/README_zh-TW.md) | [日本語](doc/README_ja.md) | [한국어](doc/README_ko.md) | [Français](doc/README_fr.md) | [Deutsch](doc/README_de.md) | [Español](doc/README_es.md)
+
 <img width="562" height="712" alt="image" src="https://github.com/user-attachments/assets/c6787432-79fd-4f2f-8908-926065c8289c" />
-
-
-
-<img width="50%" height="50%" alt="image" src="https://github.com/user-attachments/assets/18efb8fc-b365-4d61-acdd-0e4e3894592c" />
-
-
 
 Tired of the `Cmd+C` -> Open Browser -> Type "Google Translate" -> `Cmd+V` -> Cry -> Repeat cycle? 
 
@@ -98,8 +94,5 @@ Access the **Settings** via the gear icon in the Full View.
 
 ## 🤝 Contributing
 
-Found a bug? Want to add Klingon support? PRs are welcome! Just don't break the "Double Tap" feature, or we riot.
-
----
 *Made with ❤️ and too much caffeine by [Your Name/Team]*
 
