@@ -193,7 +193,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let iconName = isDark ? "dark" : "light"
         
         // Try to load from bundle resources
-        if let iconPath = Bundle.main.path(forResource: iconName, ofType: "png"),
+        // Use Bundle.module for SwiftPM resources
+        if let iconPath = Bundle.module.path(forResource: iconName, ofType: "png"),
            let image = NSImage(contentsOfFile: iconPath) {
             // Resize to standard status bar size (usually 18x18 or 22x22)
             image.size = NSSize(width: 18, height: 18)

@@ -4,6 +4,7 @@ import Cocoa
 struct ContentView: View {
     @ObservedObject var appState = AppState.shared
     @ObservedObject var localization = LocalizationManager.shared
+    @AppStorage("appTheme") private var appTheme: String = "system"
     
     var body: some View {
         Group {
@@ -14,6 +15,15 @@ struct ContentView: View {
             }
         }
         .edgesIgnoringSafeArea(.top)
+        .preferredColorScheme(colorScheme(for: appTheme))
+    }
+    
+    func colorScheme(for theme: String) -> ColorScheme? {
+        switch theme {
+        case "light": return .light
+        case "dark": return .dark
+        default: return nil // System
+        }
     }
 }
 
@@ -54,7 +64,7 @@ struct MiniView: View {
                 }
                 .menuStyle(.borderlessButton)
                 .fixedSize()
-                .onChange(of: appState.targetLang) {
+                .onChange(of: appState.targetLang) { _ in
                     appState.performTranslation()
                 }
                 
@@ -246,7 +256,7 @@ struct TranslationCard: View {
                 }
                 .menuStyle(.borderlessButton)
                 .fixedSize()
-                .onChange(of: selection) { onLangChange() }
+                .onChange(of: selection) { _ in onLangChange() }
                 
                 Spacer()
                 
@@ -309,7 +319,7 @@ struct TranslationCard: View {
                         .padding(.horizontal, 16)
                         .padding(.vertical, 16)
                         .frame(maxHeight: .infinity)
-                        .onChange(of: text) {
+                        .onChange(of: text) { _ in
                             onTextChange?()
                         }
                 } else {
