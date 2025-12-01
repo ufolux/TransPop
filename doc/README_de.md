@@ -1,9 +1,13 @@
 # TransPop 🚀
 > **Übersetzung wieder einfach gemacht** ✨
 
+**Unterstützt derzeit nur macOS, Unterstützung für andere Plattformen folgt später**
+
 <img width="562" height="712" alt="image" src="https://github.com/user-attachments/assets/c6787432-79fd-4f2f-8908-926065c8289c" />
 
 Müde vom `Cmd+C` -> Browser öffnen -> "Google Translate" eingeben -> `Cmd+V` -> Weinen -> Wiederholen Zyklus?
+
+Oder 300 MB herunterladen, nur um ein paar Wörter zu übersetzen?
 
 Ja, wir auch. Deshalb haben wir **TransPop** gebaut. Es ist wie ein Babelfisch in deiner Menüleiste, aber weniger schleimig.
 
@@ -14,6 +18,9 @@ Weil das Leben zu kurz ist, um Text manuell in einen Browser-Tab zu kopieren und
 ### 🌟 Funktionen, die dich "Wow" sagen lassen
 
 *   **Die "Double Tap" Magie**: Drücke zweimal `Cmd+C` (Doppelklick). Bumm! Übersetzung erscheint. Es ist wie das Beschwören eines Dschinns, aber für Sprachen. 🧞‍♂️
+
+    <img width="50%" height="50%" alt="image" src="https://github.com/user-attachments/assets/da48497e-7d73-43cc-a3e2-40d9368688d2" />
+
 *   **Mini-Popup-Modus**: Das Fenster erscheint *genau dort, wo dein Cursor ist*. Wir nennen es den "Ninja-Modus". Du musst nicht einmal deine Maus bewegen. 🥷
 *   **Erweiterbare UI**: Brauchst du mehr Platz? Klicke auf den Erweiterungs-Button (Pfeil-Symbol) in der Mini-UI, um zum Vollbildfenster zu wechseln.
 *   **Tray-Icon**: Wir leben in deiner Statusleiste. Immer beobachtend. Immer wartend. (Auf eine nicht gruselige Weise). 👀
@@ -23,6 +30,7 @@ Weil das Leben zu kurz ist, um Text manuell in einen Browser-Tab zu kopieren und
 *   **Sprachwechsel**: Ein Klick, um den Fluss umzukehren. `Englisch -> Chinesisch` wird zu `Chinesisch -> Englisch`. Wahnsinn. 🤯
 *   **Intelligentes Schließen**: Wähle, ob beim Schließen des Fensters in den Tray minimiert oder die App beendet werden soll. Du kannst sogar sagen "Nicht mehr fragen".
 *   **Dunkelmodus**: Weil wir Entwickler sind und der helle Modus unsere Netzhäute verbrennt. 😎
+*   **Winzige Größe**: Die App ist nur 1,8 MB groß. Du musst keine 300 MB Electron herunterladen, nur um ein paar Wörter zu übersetzen.
 
 ## 🛠 Tech Stack (Der Nerd-Kram)
 

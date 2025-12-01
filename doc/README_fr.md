@@ -1,9 +1,13 @@
 # TransPop 🚀
 > **La Traduction Redevient Simple** ✨
 
+**Supporte uniquement macOS pour l'instant, le support d'autres plateformes sera ajouté plus tard**
+
 <img width="562" height="712" alt="image" src="https://github.com/user-attachments/assets/c6787432-79fd-4f2f-8908-926065c8289c" />
 
 Fatigué du cycle `Cmd+C` -> Ouvrir le navigateur -> Taper "Google Traduction" -> `Cmd+V` -> Pleurer -> Répéter ?
+
+Ou un téléchargement de 300 Mo juste pour traduire quelques mots ?
 
 Ouais, nous aussi. C'est pourquoi nous avons créé **TransPop**. C'est comme avoir un Babel fish dans votre barre de menu, mais en moins gluant.
 
@@ -14,6 +18,9 @@ Parce que la vie est trop courte pour copier-coller manuellement du texte dans u
 ### 🌟 Des fonctionnalités qui vous feront dire "Wow"
 
 *   **La Magie du "Double Tap"** : Appuyez deux fois sur `Cmd+C` (Double Copie). Boum ! La traduction apparaît. C'est comme invoquer un génie, mais pour les langues. 🧞‍♂️
+
+    <img width="50%" height="50%" alt="image" src="https://github.com/user-attachments/assets/da48497e-7d73-43cc-a3e2-40d9368688d2" />
+
 *   **Mode Mini Popup** : La fenêtre apparaît *juste là où se trouve votre curseur*. Nous l'appelons le "Mode Ninja". Vous n'avez même pas besoin de bouger votre souris. 🥷
 *   **UI Extensible** : Besoin de plus d'espace ? Cliquez sur le bouton d'extension (icône flèches) dans l'interface Mini pour passer en fenêtre pleine taille.
 *   **Icône de la barre d'état** : Nous vivons dans votre barre d'état. Toujours à regarder. Toujours à attendre. (D'une manière non effrayante). 👀
@@ -23,6 +30,7 @@ Parce que la vie est trop courte pour copier-coller manuellement du texte dans u
 *   **Échange de Langue** : Un clic pour inverser le flux. `Anglais -> Chinois` devient `Chinois -> Anglais`. Époustouflant. 🤯
 *   **Fermeture Intelligente** : Choisissez de réduire dans la barre d'état ou de quitter l'application lorsque vous fermez la fenêtre. Vous pouvez même lui dire de "Ne plus demander".
 *   **Mode Sombre** : Parce que nous sommes des développeurs et que le mode clair nous brûle les rétines. 😎
+*   **Taille Minuscule** : L'application ne fait que 1,8 Mo. Pas besoin de télécharger 300 Mo d'Electron juste pour traduire quelques mots.
 
 ## 🛠 Tech Stack (Le truc de geek)
 

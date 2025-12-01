@@ -1,9 +1,13 @@
 # TransPop 🚀
 > **Haz la Traducción Simple de Nuevo** ✨
 
+**Solo soporta macOS por ahora, se agregará soporte para otras plataformas más tarde**
+
 <img width="562" height="712" alt="image" src="https://github.com/user-attachments/assets/c6787432-79fd-4f2f-8908-926065c8289c" />
 
 ¿Cansado del ciclo `Cmd+C` -> Abrir Navegador -> Escribir "Google Translate" -> `Cmd+V` -> Llorar -> Repetir?
+
+¿O una descarga de 300 MB solo para traducir unas pocas palabras?
 
 Sí, nosotros también. Por eso construimos **TransPop**. Es como tener un pez Babel en tu barra de menú, pero menos viscoso.
 
@@ -14,6 +18,9 @@ Porque la vida es demasiado corta para copiar y pegar texto manualmente en una p
 ### 🌟 Características que te harán decir "Wow"
 
 *   **La Magia del "Doble Toque"**: Presiona `Cmd+C` dos veces (Doble Copia). ¡Boom! Aparece la traducción. Es como invocar a un genio, pero de idiomas. 🧞‍♂️
+
+    <img width="50%" height="50%" alt="image" src="https://github.com/user-attachments/assets/da48497e-7d73-43cc-a3e2-40d9368688d2" />
+
 *   **Modo Mini Popup**: La ventana aparece *justo donde está tu cursor*. Lo llamamos "Modo Ninja". Ni siquiera tienes que mover el ratón. 🥷
 *   **UI Expandible**: ¿Necesitas más espacio? Haz clic en el botón de expansión (icono de flechas) en la Mini UI para cambiar a ventana completa.
 *   **Icono de Bandeja**: Vivimos en tu barra de estado. Siempre observando. Siempre esperando. (De una manera no espeluznante). 👀
@@ -23,6 +30,7 @@ Porque la vida es demasiado corta para copiar y pegar texto manualmente en una p
 *   **Intercambio de Idioma**: Un clic para invertir el flujo. `Inglés -> Chino` se convierte en `Chino -> Inglés`. Alucinante. 🤯
 *   **Cierre Inteligente**: Elige si minimizar a la bandeja o salir de la aplicación al cerrar la ventana. Incluso puedes decirle "No volver a preguntar".
 *   **Modo Oscuro**: Porque somos desarrolladores y el modo claro nos quema las retinas. 😎
+*   **Tamaño Diminuto**: La aplicación es de solo 1.8 MB. No es necesario descargar 300 MB de Electron solo para traducir unas pocas palabras.
 
 ## 🛠 Tech Stack (La cosa nerd)
 

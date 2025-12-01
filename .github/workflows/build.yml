@@ -12,6 +12,7 @@ permissions:
 jobs:
   build:
     runs-on: macos-latest
+    if: ${{ !startsWith(github.event.head_commit.message, 'doc:') }}
 
     steps:
       - name: Checkout code
