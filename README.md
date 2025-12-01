@@ -94,7 +94,7 @@ Access the **Settings** via the gear icon in the Full View.
 *   **OpenAI Compatible Settings**:
     *   **API URL**: Default is `http://127.0.0.1:11434/v1/chat/completions` (perfect for Ollama).
     *   **API Key**: Optional for local LLMs.
-    *   **Model**: Specify the model name (e.g., `llama3`, `gpt-4o`).
+    *   **Model**: Specify the model name (e.g., `llama3`, `gpt-4o`, `zongwei/gemma3-translator:1b` I tried this one, works perfectly for me).
 
 ## 🤝 Contributing
 
