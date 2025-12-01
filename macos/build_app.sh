@@ -84,10 +84,17 @@ if [ -f "$ICON_SOURCE" ]; then
 fi
 
 echo "📦 Copying Resource Bundle..."
+# Debug: List build directory
+echo "Debug: Listing .build/release content:"
+ls -la "$BUILD_DIR" || echo "Warning: Could not list $BUILD_DIR"
+
 if [ -d "$BUILD_DIR/TransPop_TransPop.bundle" ]; then
     cp -r "$BUILD_DIR/TransPop_TransPop.bundle" "$RESOURCES_DIR/"
 else
-    echo "⚠️  Warning: TransPop_TransPop.bundle not found in build directory."
+    echo "❌ Error: TransPop_TransPop.bundle not found in build directory."
+    echo "Debug: Listing all bundles in .build:"
+    find .build -name "*.bundle"
+    exit 1
 fi
 
 echo "📦 Copying Executable..."
