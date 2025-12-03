@@ -36,6 +36,8 @@ class LocalizationManager: ObservableObject {
             "main.placeholder.target": "Translation will appear here...",
             "main.copy": "Copy",
             "main.clear": "Clear",
+            "main.read_aloud": "Read Aloud",
+            "main.stop_speaking": "Stop Speaking",
             
             "lang.en": "English",
             "lang.zh-CN": "Chinese (Simplified)",
@@ -75,6 +77,8 @@ class LocalizationManager: ObservableObject {
             "main.placeholder.target": "翻译结果将显示在这里...",
             "main.copy": "复制",
             "main.clear": "清除",
+            "main.read_aloud": "朗读",
+            "main.stop_speaking": "停止朗读",
             
             "lang.en": "英语",
             "lang.zh-CN": "中文 (简体)",
@@ -114,6 +118,8 @@ class LocalizationManager: ObservableObject {
             "main.placeholder.target": "翻譯結果將顯示在這裡...",
             "main.copy": "複製",
             "main.clear": "清除",
+            "main.read_aloud": "朗讀",
+            "main.stop_speaking": "停止朗讀",
             
             "lang.en": "英語",
             "lang.zh-CN": "中文 (簡體)",
@@ -153,6 +159,8 @@ class LocalizationManager: ObservableObject {
             "main.placeholder.target": "翻訳結果がここに表示されます...",
             "main.copy": "コピー",
             "main.clear": "クリア",
+            "main.read_aloud": "読み上げ",
+            "main.stop_speaking": "読み上げ停止",
             
             "lang.en": "英語",
             "lang.zh-CN": "中国語 (簡体字)",
@@ -192,6 +200,8 @@ class LocalizationManager: ObservableObject {
             "main.placeholder.target": "번역 결과가 여기에 표시됩니다...",
             "main.copy": "복사",
             "main.clear": "지우기",
+            "main.read_aloud": "읽기",
+            "main.stop_speaking": "읽기 중지",
             
             "lang.en": "영어",
             "lang.zh-CN": "중국어 (간체)",
@@ -231,6 +241,8 @@ class LocalizationManager: ObservableObject {
             "main.placeholder.target": "La traduction apparaîtra ici...",
             "main.copy": "Copier",
             "main.clear": "Effacer",
+            "main.read_aloud": "Lire à haute voix",
+            "main.stop_speaking": "Arrêter la lecture",
             
             "lang.en": "Anglais",
             "lang.zh-CN": "Chinois (Simplifié)",
@@ -270,6 +282,8 @@ class LocalizationManager: ObservableObject {
             "main.placeholder.target": "Die Übersetzung erscheint hier...",
             "main.copy": "Kopieren",
             "main.clear": "Löschen",
+            "main.read_aloud": "Vorlesen",
+            "main.stop_speaking": "Vorlesen stoppen",
             
             "lang.en": "Englisch",
             "lang.zh-CN": "Chinesisch (Vereinfacht)",
@@ -309,6 +323,8 @@ class LocalizationManager: ObservableObject {
             "main.placeholder.target": "La traducción aparecerá aquí...",
             "main.copy": "Copiar",
             "main.clear": "Borrar",
+            "main.read_aloud": "Leer en voz alta",
+            "main.stop_speaking": "Dejar de leer",
             
             "lang.en": "Inglés",
             "lang.zh-CN": "Chino (Simplificado)",

@@ -234,6 +234,7 @@ struct TranslationCard: View {
     var onLangChange: () -> Void
     var onTextChange: (() -> Void)? = nil
     @ObservedObject var localization = LocalizationManager.shared
+    @ObservedObject var speechService = SpeechService.shared
     
     var body: some View {
         VStack(spacing: 0) {
@@ -279,6 +280,21 @@ struct TranslationCard: View {
                                 .scaleEffect(0.5)
                                 .frame(width: 16, height: 16)
                         }
+                        
+                        
+                        Button(action: {
+                            if speechService.isSpeaking {
+                                speechService.stop()
+                            } else {
+                                speechService.speak(text, language: selection)
+                            }
+                        }) {
+                            Image(systemName: speechService.isSpeaking ? "stop.fill" : "speaker.wave.2")
+                                .font(.system(size: 14))
+                                .foregroundColor(speechService.isSpeaking ? .red : .secondary)
+                        }
+                        .buttonStyle(.plain)
+                        .help(speechService.isSpeaking ? "main.stop_speaking".localized : "main.read_aloud".localized)
                         
                         Button(action: {
                             NSPasteboard.general.clearContents()
