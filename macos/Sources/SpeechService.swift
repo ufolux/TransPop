@@ -1,6 +1,7 @@
 import AVFoundation
 import Combine
 
+@MainActor
 class SpeechService: NSObject, ObservableObject, AVSpeechSynthesizerDelegate {
     static let shared = SpeechService()
     private let synthesizer = AVSpeechSynthesizer()
@@ -33,14 +34,14 @@ class SpeechService: NSObject, ObservableObject, AVSpeechSynthesizerDelegate {
     
     // MARK: - AVSpeechSynthesizerDelegate
     
-    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
-        DispatchQueue.main.async {
+    nonisolated func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
+        Task { @MainActor in
             self.isSpeaking = false
         }
     }
     
-    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didCancel utterance: AVSpeechUtterance) {
-        DispatchQueue.main.async {
+    nonisolated func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didCancel utterance: AVSpeechUtterance) {
+        Task { @MainActor in
             self.isSpeaking = false
         }
     }

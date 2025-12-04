@@ -82,13 +82,13 @@ struct SettingsView: View {
                             
                             // Close Action Picker
                             HStack {
-                                Label("When closing window", systemImage: "xmark.circle")
+                                Label("settings.close_action".localized, systemImage: "xmark.circle")
                                     .foregroundColor(.primary)
                                 Spacer()
                                 Picker("", selection: $closeAction) {
-                                    Text("Ask every time").tag("prompt")
-                                    Text("Minimize to tray").tag("minimize")
-                                    Text("Quit application").tag("quit")
+                                    Text("settings.close.prompt".localized).tag("prompt")
+                                    Text("settings.close.minimize".localized).tag("minimize")
+                                    Text("settings.close.quit".localized).tag("quit")
                                 }
                                 .pickerStyle(.menu)
                                 .frame(width: 140)
@@ -105,7 +105,7 @@ struct SettingsView: View {
                     
                     // Translation API Section
                     VStack(alignment: .leading, spacing: 12) {
-                        Text("Translation API")
+                        Text("settings.provider".localized)
                             .font(.subheadline)
                             .foregroundColor(.secondary)
                             .padding(.horizontal, 4)
@@ -113,13 +113,13 @@ struct SettingsView: View {
                         VStack(spacing: 0) {
                             // Provider Picker
                             HStack {
-                                Label("Provider", systemImage: "server.rack")
+                                Label("settings.provider".localized, systemImage: "server.rack")
                                     .foregroundColor(.primary)
                                 Spacer()
                                 Picker("", selection: $apiProvider) {
-                                    Text("Google (Free)").tag("googleFree")
-                                    Text("Bing Translate").tag("bing")
-                                    Text("OpenAI Compatible").tag("openaiCompatible")
+                                    Text("settings.provider.google".localized).tag("googleFree")
+                                    Text("settings.provider.bing".localized).tag("bing")
+                                    Text("settings.provider.openai".localized).tag("openaiCompatible")
                                 }
                                 .pickerStyle(.menu)
                                 .frame(width: 160)
@@ -133,7 +133,7 @@ struct SettingsView: View {
                                 
                                 // API URL
                                 HStack {
-                                    Label("API URL", systemImage: "link")
+                                    Label("settings.api_url".localized, systemImage: "link")
                                         .foregroundColor(.primary)
                                     Spacer()
                                     TextField("http://127.0.0.1:11434/v1/chat/completions", text: $apiUrl)
@@ -148,10 +148,10 @@ struct SettingsView: View {
                                 
                                 // API Key
                                 HStack {
-                                    Label("API Key", systemImage: "key")
+                                    Label("settings.api_key".localized, systemImage: "key")
                                         .foregroundColor(.primary)
                                     Spacer()
-                                    SecureField("Optional for local", text: $apiKey)
+                                    SecureField("settings.api_key_placeholder".localized, text: $apiKey)
                                         .textFieldStyle(RoundedBorderTextFieldStyle())
                                         .frame(width: 200)
                                 }
@@ -163,7 +163,7 @@ struct SettingsView: View {
                                 
                                 // Model Name
                                 HStack {
-                                    Label("Model", systemImage: "cube")
+                                    Label("settings.model".localized, systemImage: "cube")
                                         .foregroundColor(.primary)
                                     Spacer()
                                     TextField("gpt-3.5-turbo", text: $modelName)
@@ -183,7 +183,7 @@ struct SettingsView: View {
                     
                     // Updates Section
                     VStack(alignment: .leading, spacing: 12) {
-                        Text("Updates")
+                        Text("settings.updates".localized)
                             .font(.subheadline)
                             .foregroundColor(.secondary)
                             .padding(.horizontal, 4)
@@ -191,7 +191,7 @@ struct SettingsView: View {
                         VStack(spacing: 0) {
                             // Auto Check Toggle
                             HStack {
-                                Label("Automatically check for updates", systemImage: "arrow.triangle.2.circlepath")
+                                Label("settings.updates.auto".localized, systemImage: "arrow.triangle.2.circlepath")
                                     .foregroundColor(.primary)
                                 Spacer()
                                 Toggle("", isOn: $autoCheckUpdates)
@@ -214,7 +214,7 @@ struct SettingsView: View {
                                                 .scaleEffect(0.5)
                                                 .frame(width: 16, height: 16)
                                         } else {
-                                            Text("Check for Updates")
+                                            Text("settings.updates.check".localized)
                                         }
                                     }
                                     .disabled(updateManager.isChecking)
@@ -237,7 +237,7 @@ struct SettingsView: View {
                                 
                                 if updateManager.updateAvailable, let newVersion = updateManager.latestVersion {
                                     VStack(alignment: .leading, spacing: 8) {
-                                        Text("New version available: \(newVersion)")
+                                        Text("\("settings.updates.new_version".localized) \(newVersion)")
                                             .font(.headline)
                                         
                                         if let notes = updateManager.releaseNotes {
@@ -251,7 +251,7 @@ struct SettingsView: View {
                                             updateManager.downloadAndInstall()
                                         }) {
                                             HStack {
-                                                Text("Download & Install")
+                                                Text("settings.updates.download".localized)
                                                 if updateManager.isDownloading {
                                                     ProgressView()
                                                         .scaleEffect(0.5)
