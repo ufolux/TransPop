@@ -85,6 +85,29 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if UserDefaults.standard.bool(forKey: "autoCheckUpdates") {
             UpdateManager.shared.checkForUpdates()
         }
+        
+        // Initial Theme Setup
+        updateWindowAppearance()
+        
+        // Observe Theme Changes
+        UserDefaults.standard.addObserver(self, forKeyPath: "appTheme", options: [.new], context: nil)
+    }
+    
+    deinit {
+        UserDefaults.standard.removeObserver(self, forKeyPath: "appTheme")
+    }
+    
+    func updateWindowAppearance() {
+        let theme = UserDefaults.standard.string(forKey: "appTheme") ?? "system"
+        switch theme {
+        case "light":
+            window.appearance = NSAppearance(named: .aqua)
+        case "dark":
+            window.appearance = NSAppearance(named: .darkAqua)
+        default:
+            window.appearance = nil // Reset to system
+        }
+        updateStatusBarIcon()
     }
     
     @objc func forceStartApp() {
@@ -187,6 +210,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "effectiveAppearance" {
             updateStatusBarIcon()
+        } else if keyPath == "appTheme" {
+            updateWindowAppearance()
         }
     }
 
