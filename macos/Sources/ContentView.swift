@@ -14,16 +14,8 @@ struct ContentView: View {
                 FullView()
             }
         }
+
         .edgesIgnoringSafeArea(.top)
-        .preferredColorScheme(colorScheme(for: appTheme))
-    }
-    
-    func colorScheme(for theme: String) -> ColorScheme? {
-        switch theme {
-        case "light": return .light
-        case "dark": return .dark
-        default: return nil // System
-        }
     }
 }
 
