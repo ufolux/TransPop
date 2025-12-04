@@ -118,6 +118,7 @@ struct SettingsView: View {
                                 Spacer()
                                 Picker("", selection: $apiProvider) {
                                     Text("Google (Free)").tag("googleFree")
+                                    Text("Bing Translate").tag("bing")
                                     Text("OpenAI Compatible").tag("openaiCompatible")
                                 }
                                 .pickerStyle(.menu)
