@@ -13,6 +13,8 @@ class TranslationService {
         
         if provider == "openaiCompatible" {
             translateWithOpenAI(text: text, source: source, target: target, completion: completion)
+        } else if provider == "bing" {
+            BingWebTranslator.shared.translate(text: text, from: source, to: target, completion: completion)
         } else {
             translateWithGoogleFree(text: text, source: source, target: target, completion: completion)
         }

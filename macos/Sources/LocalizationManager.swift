@@ -46,7 +46,29 @@ class LocalizationManager: ObservableObject {
             "lang.ko": "Korean",
             "lang.fr": "French",
             "lang.de": "German",
-            "lang.es": "Spanish"
+            "lang.es": "Spanish",
+            
+            "settings.close_action": "When closing window",
+            "settings.close.prompt": "Ask every time",
+            "settings.close.minimize": "Minimize to tray",
+            "settings.close.quit": "Quit application",
+            
+            "settings.provider": "Provider",
+            "settings.api_url": "API URL",
+            "settings.api_key": "API Key",
+            "settings.model": "Model",
+            "settings.api_key_placeholder": "Optional for local",
+            "settings.provider.google": "Google (Free)",
+            "settings.provider.bing": "Bing Translate (Free)",
+            "settings.provider.openai": "OpenAI Compatible (Advanced)",
+            
+            "settings.updates": "Updates",
+            "settings.updates.auto": "Automatically check for updates",
+            "settings.updates.check": "Check for Updates",
+            "settings.updates.checking": "Checking...",
+            "settings.updates.latest": "Latest version installed",
+            "settings.updates.new_version": "New version available:",
+            "settings.updates.download": "Download & Install"
         ],
         // Chinese Simplified
         "zh-CN": [
@@ -87,7 +109,29 @@ class LocalizationManager: ObservableObject {
             "lang.ko": "韩语",
             "lang.fr": "法语",
             "lang.de": "德语",
-            "lang.es": "西班牙语"
+            "lang.es": "西班牙语",
+            
+            "settings.close_action": "关闭窗口时",
+            "settings.close.prompt": "每次询问",
+            "settings.close.minimize": "最小化到托盘",
+            "settings.close.quit": "退出应用",
+            
+            "settings.provider": "翻译服务",
+            "settings.api_url": "API 地址",
+            "settings.api_key": "API 密钥",
+            "settings.model": "模型名称",
+            "settings.api_key_placeholder": "本地部署可留空",
+            "settings.provider.google": "Google (免费)",
+            "settings.provider.bing": "Bing 翻译 (免费)",
+            "settings.provider.openai": "OpenAI 兼容 (高级)",
+            
+            "settings.updates": "更新",
+            "settings.updates.auto": "自动检查更新",
+            "settings.updates.check": "检查更新",
+            "settings.updates.checking": "正在检查...",
+            "settings.updates.latest": "已是最新版本",
+            "settings.updates.new_version": "发现新版本：",
+            "settings.updates.download": "下载并安装"
         ],
         // Chinese Traditional
         "zh-TW": [
@@ -128,7 +172,29 @@ class LocalizationManager: ObservableObject {
             "lang.ko": "韓語",
             "lang.fr": "法語",
             "lang.de": "德語",
-            "lang.es": "西班牙語"
+            "lang.es": "西班牙語",
+            
+            "settings.close_action": "關閉視窗時",
+            "settings.close.prompt": "每次詢問",
+            "settings.close.minimize": "最小化到托盤",
+            "settings.close.quit": "退出應用",
+            
+            "settings.provider": "翻譯服務",
+            "settings.api_url": "API 地址",
+            "settings.api_key": "API 金鑰",
+            "settings.model": "模型名稱",
+            "settings.api_key_placeholder": "本地部署可留空",
+            "settings.provider.google": "Google (免費)",
+            "settings.provider.bing": "Bing 翻譯 (免費)",
+            "settings.provider.openai": "OpenAI 相容 (進階)",
+            
+            "settings.updates": "更新",
+            "settings.updates.auto": "自動檢查更新",
+            "settings.updates.check": "檢查更新",
+            "settings.updates.checking": "正在檢查...",
+            "settings.updates.latest": "已是最新版本",
+            "settings.updates.new_version": "發現新版本：",
+            "settings.updates.download": "下載並安裝"
         ],
         // Japanese
         "ja": [
@@ -169,7 +235,29 @@ class LocalizationManager: ObservableObject {
             "lang.ko": "韓国語",
             "lang.fr": "フランス語",
             "lang.de": "ドイツ語",
-            "lang.es": "スペイン語"
+            "lang.es": "スペイン語",
+            
+            "settings.close_action": "ウィンドウを閉じる時",
+            "settings.close.prompt": "毎回確認する",
+            "settings.close.minimize": "トレイに最小化",
+            "settings.close.quit": "アプリを終了",
+            
+            "settings.provider": "翻訳プロバイダー",
+            "settings.api_url": "API URL",
+            "settings.api_key": "API キー",
+            "settings.model": "モデル名",
+            "settings.api_key_placeholder": "ローカルの場合は省略可",
+            "settings.provider.google": "Google (無料)",
+            "settings.provider.bing": "Bing 翻訳 (無料)",
+            "settings.provider.openai": "OpenAI 互換 (詳細)",
+            
+            "settings.updates": "アップデート",
+            "settings.updates.auto": "自動的にアップデートを確認",
+            "settings.updates.check": "アップデートを確認",
+            "settings.updates.checking": "確認中...",
+            "settings.updates.latest": "最新バージョンです",
+            "settings.updates.new_version": "新しいバージョン：",
+            "settings.updates.download": "ダウンロードしてインストール"
         ],
         // Korean
         "ko": [
@@ -210,7 +298,29 @@ class LocalizationManager: ObservableObject {
             "lang.ko": "한국어",
             "lang.fr": "프랑스어",
             "lang.de": "독일어",
-            "lang.es": "스페인어"
+            "lang.es": "스페인어",
+            
+            "settings.close_action": "창을 닫을 때",
+            "settings.close.prompt": "항상 묻기",
+            "settings.close.minimize": "트레이로 최소화",
+            "settings.close.quit": "앱 종료",
+            
+            "settings.provider": "번역 제공자",
+            "settings.api_url": "API URL",
+            "settings.api_key": "API 키",
+            "settings.model": "모델 이름",
+            "settings.api_key_placeholder": "로컬인 경우 선택 사항",
+            "settings.provider.google": "Google (무료)",
+            "settings.provider.bing": "Bing 번역 (무료)",
+            "settings.provider.openai": "OpenAI 호환 (고급)",
+            
+            "settings.updates": "업데이트",
+            "settings.updates.auto": "자동으로 업데이트 확인",
+            "settings.updates.check": "업데이트 확인",
+            "settings.updates.checking": "확인 중...",
+            "settings.updates.latest": "최신 버전입니다",
+            "settings.updates.new_version": "새 버전 사용 가능:",
+            "settings.updates.download": "다운로드 및 설치"
         ],
         // French
         "fr": [
@@ -251,7 +361,29 @@ class LocalizationManager: ObservableObject {
             "lang.ko": "Coréen",
             "lang.fr": "Français",
             "lang.de": "Allemand",
-            "lang.es": "Espagnol"
+            "lang.es": "Espagnol",
+            
+            "settings.close_action": "À la fermeture de la fenêtre",
+            "settings.close.prompt": "Demander à chaque fois",
+            "settings.close.minimize": "Réduire dans la barre d'état",
+            "settings.close.quit": "Quitter l'application",
+            
+            "settings.provider": "Fournisseur",
+            "settings.api_url": "URL de l'API",
+            "settings.api_key": "Clé API",
+            "settings.model": "Modèle",
+            "settings.api_key_placeholder": "Optionnel pour local",
+            "settings.provider.google": "Google (Gratuit)",
+            "settings.provider.bing": "Bing Traduction (Gratuit)",
+            "settings.provider.openai": "Compatible OpenAI (Avancé)",
+            
+            "settings.updates": "Mises à jour",
+            "settings.updates.auto": "Vérifier automatiquement",
+            "settings.updates.check": "Vérifier les mises à jour",
+            "settings.updates.checking": "Vérification...",
+            "settings.updates.latest": "Dernière version installée",
+            "settings.updates.new_version": "Nouvelle version disponible :",
+            "settings.updates.download": "Télécharger et installer"
         ],
         // German
         "de": [
@@ -292,7 +424,29 @@ class LocalizationManager: ObservableObject {
             "lang.ko": "Koreanisch",
             "lang.fr": "Französisch",
             "lang.de": "Deutsch",
-            "lang.es": "Spanisch"
+            "lang.es": "Spanisch",
+            
+            "settings.close_action": "Beim Schließen des Fensters",
+            "settings.close.prompt": "Jedes Mal fragen",
+            "settings.close.minimize": "In Systemtray minimieren",
+            "settings.close.quit": "Anwendung beenden",
+            
+            "settings.provider": "Anbieter",
+            "settings.api_url": "API URL",
+            "settings.api_key": "API Schlüssel",
+            "settings.model": "Modell",
+            "settings.api_key_placeholder": "Optional für lokal",
+            "settings.provider.google": "Google (Kostenlos)",
+            "settings.provider.bing": "Bing Translate (Kostenlos)",
+            "settings.provider.openai": "OpenAI Kompatibel (Erweitert)",
+            
+            "settings.updates": "Updates",
+            "settings.updates.auto": "Automatisch nach Updates suchen",
+            "settings.updates.check": "Nach Updates suchen",
+            "settings.updates.checking": "Suchen...",
+            "settings.updates.latest": "Neueste Version installiert",
+            "settings.updates.new_version": "Neue Version verfügbar:",
+            "settings.updates.download": "Herunterladen & Installieren"
         ],
         // Spanish
         "es": [
@@ -333,7 +487,29 @@ class LocalizationManager: ObservableObject {
             "lang.ko": "Coreano",
             "lang.fr": "Francés",
             "lang.de": "Alemán",
-            "lang.es": "Español"
+            "lang.es": "Español",
+            
+            "settings.close_action": "Al cerrar la ventana",
+            "settings.close.prompt": "Preguntar siempre",
+            "settings.close.minimize": "Minimizar a la bandeja",
+            "settings.close.quit": "Salir de la aplicación",
+            
+            "settings.provider": "Proveedor",
+            "settings.api_url": "URL de la API",
+            "settings.api_key": "Clave API",
+            "settings.model": "Modelo",
+            "settings.api_key_placeholder": "Opcional para local",
+            "settings.provider.google": "Google (Gratis)",
+            "settings.provider.bing": "Bing Translate (Gratis)",
+            "settings.provider.openai": "Compatible con OpenAI (Avanzado)",
+            
+            "settings.updates": "Actualizaciones",
+            "settings.updates.auto": "Buscar actualizaciones automáticamente",
+            "settings.updates.check": "Buscar actualizaciones",
+            "settings.updates.checking": "Buscando...",
+            "settings.updates.latest": "Última versión instalada",
+            "settings.updates.new_version": "Nueva versión disponible:",
+            "settings.updates.download": "Descargar e instalar"
         ]
     ]
     
