@@ -157,9 +157,9 @@ class UpdateManager: ObservableObject {
             let script = """
             #!/bin/bash
             sleep 2
-            echo "Replacing \(appPath) with \(newAppURL.path)"
-            rm -rf "\(appPath)"
-            mv "\(newAppURL.path)" "\(appPath)"
+            echo "Updating \(appPath) from \(newAppURL.path)"
+            # Use rsync to update in-place, preserving permissions and attributes where possible
+            rsync -a --delete "\(newAppURL.path)/" "\(appPath)/"
             xattr -cr "\(appPath)"
             open "\(appPath)"
             """
