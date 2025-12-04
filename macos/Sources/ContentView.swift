@@ -31,6 +31,7 @@ struct ContentView: View {
 struct MiniView: View {
     @ObservedObject var appState = AppState.shared
     @ObservedObject var localization = LocalizationManager.shared
+    @ObservedObject var speechService = SpeechService.shared
     
     var body: some View {
         VStack(spacing: 0) {
@@ -69,6 +70,25 @@ struct MiniView: View {
                 }
                 
                 Spacer()
+                
+                // Speak Button
+                Button(action: {
+                    if speechService.isSpeaking {
+                        speechService.stop()
+                    } else {
+                        speechService.speak(appState.targetText, language: appState.targetLang)
+                    }
+                }) {
+                    Image(systemName: speechService.isSpeaking ? "stop.fill" : "speaker.wave.2")
+                        .font(.system(size: 12, weight: .bold))
+                        .foregroundColor(speechService.isSpeaking ? .red : .secondary)
+                        .padding(6)
+                        .background(Color.gray.opacity(0.1))
+                        .clipShape(Circle())
+                }
+                .buttonStyle(.plain)
+                .help(speechService.isSpeaking ? "main.stop_speaking".localized : "main.read_aloud".localized)
+                .padding(.trailing, 4)
                 
                 // Expand Button
                 Button(action: {
