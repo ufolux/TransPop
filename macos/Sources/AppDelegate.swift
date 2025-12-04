@@ -79,6 +79,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         // Activate app
         NSApp.activate(ignoringOtherApps: true)
+        
+        // Check for Updates
+        UserDefaults.standard.register(defaults: ["autoCheckUpdates": true])
+        if UserDefaults.standard.bool(forKey: "autoCheckUpdates") {
+            UpdateManager.shared.checkForUpdates()
+        }
     }
     
     @objc func forceStartApp() {

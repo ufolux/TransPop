@@ -11,6 +11,10 @@ struct SettingsView: View {
     @AppStorage("apiKey") private var apiKey: String = ""
     @AppStorage("modelName") private var modelName: String = "llama3"
     
+    // Update Settings
+    @AppStorage("autoCheckUpdates") private var autoCheckUpdates: Bool = true
+    @ObservedObject var updateManager = UpdateManager.shared
+    
     var body: some View {
         VStack(spacing: 0) {
             // Header
@@ -168,6 +172,101 @@ struct SettingsView: View {
                                 .padding()
                                 .background(Color(NSColor.controlBackgroundColor))
                             }
+                        }
+                        .cornerRadius(10)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(Color.gray.opacity(0.2), lineWidth: 1)
+                        )
+                    }
+                    
+                    // Updates Section
+                    VStack(alignment: .leading, spacing: 12) {
+                        Text("Updates")
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
+                            .padding(.horizontal, 4)
+                        
+                        VStack(spacing: 0) {
+                            // Auto Check Toggle
+                            HStack {
+                                Label("Automatically check for updates", systemImage: "arrow.triangle.2.circlepath")
+                                    .foregroundColor(.primary)
+                                Spacer()
+                                Toggle("", isOn: $autoCheckUpdates)
+                                    .toggleStyle(SwitchToggleStyle(tint: .blue))
+                            }
+                            .padding()
+                            .background(Color(NSColor.controlBackgroundColor))
+                            
+                            Divider()
+                                .padding(.leading, 16)
+                            
+                            // Check Now Button & Status
+                            VStack(spacing: 12) {
+                                HStack {
+                                    Button(action: {
+                                        updateManager.checkForUpdates(manual: true)
+                                    }) {
+                                        if updateManager.isChecking {
+                                            ProgressView()
+                                                .scaleEffect(0.5)
+                                                .frame(width: 16, height: 16)
+                                        } else {
+                                            Text("Check for Updates")
+                                        }
+                                    }
+                                    .disabled(updateManager.isChecking)
+                                    
+                                    Spacer()
+                                    
+                                    if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
+                                        Text("v\(version)")
+                                            .foregroundColor(.secondary)
+                                            .font(.caption)
+                                    }
+                                }
+                                
+                                if let error = updateManager.updateError {
+                                    Text(error)
+                                        .foregroundColor(.red)
+                                        .font(.caption)
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                }
+                                
+                                if updateManager.updateAvailable, let newVersion = updateManager.latestVersion {
+                                    VStack(alignment: .leading, spacing: 8) {
+                                        Text("New version available: \(newVersion)")
+                                            .font(.headline)
+                                        
+                                        if let notes = updateManager.releaseNotes {
+                                            Text(notes)
+                                                .font(.caption)
+                                                .foregroundColor(.secondary)
+                                                .lineLimit(3)
+                                        }
+                                        
+                                        Button(action: {
+                                            updateManager.downloadAndInstall()
+                                        }) {
+                                            HStack {
+                                                Text("Download & Install")
+                                                if updateManager.isDownloading {
+                                                    ProgressView()
+                                                        .scaleEffect(0.5)
+                                                        .frame(width: 16, height: 16)
+                                                }
+                                            }
+                                        }
+                                        .buttonStyle(.borderedProminent)
+                                        .disabled(updateManager.isDownloading)
+                                    }
+                                    .padding(.top, 4)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                }
+                            }
+                            .padding()
+                            .background(Color(NSColor.controlBackgroundColor))
                         }
                         .cornerRadius(10)
                         .overlay(
