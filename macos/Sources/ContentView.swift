@@ -82,6 +82,22 @@ struct MiniView: View {
                 .help(speechService.isSpeaking ? "main.stop_speaking".localized : "main.read_aloud".localized)
                 .padding(.trailing, 4)
                 
+                // Copy Button
+                Button(action: {
+                    NSPasteboard.general.clearContents()
+                    NSPasteboard.general.setString(appState.targetText, forType: .string)
+                }) {
+                    Image(systemName: "doc.on.doc")
+                        .font(.system(size: 12, weight: .bold))
+                        .foregroundColor(.secondary)
+                        .padding(6)
+                        .background(Color.gray.opacity(0.1))
+                        .clipShape(Circle())
+                }
+                .buttonStyle(.plain)
+                .help("main.copy".localized)
+                .padding(.trailing, 4)
+                
                 // Expand Button
                 Button(action: {
                     NotificationCenter.default.post(name: NSNotification.Name("ExpandWindow"), object: nil)

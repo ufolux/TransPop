@@ -244,8 +244,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 extension AppDelegate: NSWindowDelegate {
     func windowShouldClose(_ sender: NSWindow) -> Bool {
         // If in Mini Mode, just minimize without asking
+        // If in Mini Mode, just minimize without asking
         if AppState.shared.viewMode == .mini {
-            sender.orderOut(nil)
+            // Hiding the app (cmd+h equivalent) returns focus to the previous app naturally
+            NSApp.hide(nil)
             return false
         }
         
