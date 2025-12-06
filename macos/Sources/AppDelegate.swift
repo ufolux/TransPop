@@ -240,10 +240,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func updateStatusBarIcon() {
         guard let button = statusBarItem.button else { return }
         
-        let appearance = NSApp.effectiveAppearance
-        let isDark = appearance.bestMatch(from: [.darkAqua, .aqua]) == .darkAqua
-        
-        let iconName = isDark ? "dark" : "light"
+        // User requested white icon (dark resource) always
+        let iconName = "dark"
         
         // Try to load from bundle resources
         // Use Bundle.main because we copy resources directly to Contents/Resources

@@ -43,14 +43,9 @@ struct SettingsView: View {
                                     .foregroundColor(.primary)
                                 Spacer()
                                 Picker("", selection: $localization.language) {
-                                    Text("English").tag("en")
-                                    Text("简体中文").tag("zh-CN")
-                                    Text("繁體中文").tag("zh-TW")
-                                    Text("日本語").tag("ja")
-                                    Text("한국어").tag("ko")
-                                    Text("Français").tag("fr")
-                                    Text("Deutsch").tag("de")
-                                    Text("Español").tag("es")
+                                    ForEach(localization.supportedLanguages, id: \.self) { code in
+                                        Text(localization.nativeLanguageName(for: code)).tag(code)
+                                    }
                                 }
                                 .pickerStyle(.menu)
                                 .frame(width: 140)
@@ -120,6 +115,10 @@ struct SettingsView: View {
                                     Text("settings.provider.google".localized).tag("googleFree")
                                     Text("settings.provider.bing".localized).tag("bing")
                                     Text("settings.provider.openai".localized).tag("openaiCompatible")
+                                }
+                                .onChange(of: apiProvider) { _ in
+                                    // Trigger re-translation when provider changes
+                                    AppState.shared.performTranslation()
                                 }
                                 .pickerStyle(.menu)
                                 .frame(width: 160)

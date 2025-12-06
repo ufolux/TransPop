@@ -33,14 +33,9 @@ struct MiniView: View {
                 
                 Menu {
                     Picker("", selection: $appState.targetLang) {
-                        Text("English").tag("en")
-                        Text("Chinese (S)").tag("zh-CN")
-                        Text("Chinese (T)").tag("zh-TW")
-                        Text("Japanese").tag("ja")
-                        Text("Korean").tag("ko")
-                        Text("French").tag("fr")
-                        Text("German").tag("de")
-                        Text("Spanish").tag("es")
+                        ForEach(localization.supportedLanguages, id: \.self) { code in
+                            Text(localization.localizedString("lang.\(code)")).tag(code)
+                        }
                     }
                     .pickerStyle(.inline)
                     .labelsHidden()
@@ -273,14 +268,9 @@ struct TranslationCard: View {
                         if isSource {
                             Text("main.detect_language".localized).tag("auto")
                         }
-                        Text("lang.en".localized).tag("en")
-                        Text("lang.zh-CN".localized).tag("zh-CN")
-                        Text("lang.zh-TW".localized).tag("zh-TW")
-                        Text("lang.ja".localized).tag("ja")
-                        Text("lang.ko".localized).tag("ko")
-                        Text("lang.fr".localized).tag("fr")
-                        Text("lang.de".localized).tag("de")
-                        Text("lang.es".localized).tag("es")
+                        ForEach(localization.supportedLanguages, id: \.self) { code in
+                            Text(localization.localizedString("lang.\(code)")).tag(code)
+                        }
                     }
                     .pickerStyle(.inline)
                     .labelsHidden()
