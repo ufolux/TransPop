@@ -145,9 +145,31 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         // Adjust Y to be slightly below cursor (cursor is top-left of pointer usually)
         // We want window top to be at cursor Y.
-        let x = mouseLoc.x
-        let y = mouseLoc.y - height - 20 // 20px offset
+        var x = mouseLoc.x
+        var y = mouseLoc.y - height - 20 // 20px offset
         
+        // Ensure Window is Screen-Bound
+        // Find the screen that contains the mouse cursor
+        if let screen = NSScreen.screens.first(where: { NSPointInRect(mouseLoc, $0.frame) }) ?? NSScreen.main {
+            let visibleFrame = screen.visibleFrame
+            
+            // Validate X
+            if x < visibleFrame.minX {
+                x = visibleFrame.minX
+            } else if x + width > visibleFrame.maxX {
+                x = visibleFrame.maxX - width
+            }
+            
+            // Validate Y
+            if y < visibleFrame.minY {
+                // If falls off bottom, pin to bottom (but above dock if any)
+                y = visibleFrame.minY
+            } else if y + height > visibleFrame.maxY {
+                // If falls off top, pin to top (but below menu bar)
+                y = visibleFrame.maxY - height
+            }
+        }
+
         window.setFrame(NSRect(x: x, y: y, width: width, height: height), display: true, animate: true)
         
         if !window.isVisible {
