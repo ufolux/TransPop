@@ -50,7 +50,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         // Create Window
         window = NSWindow(
-            contentRect: NSRect(x: 0, y: 0, width: 450, height: 600),
+            contentRect: NSRect(x: 0, y: 0, width: 750, height: 600),
             styleMask: [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView],
             backing: .buffered, defer: false)
         
@@ -186,7 +186,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         // Center window or keep position but resize?
         // Let's center for full mode as it's cleaner
-        let width: CGFloat = 450
+        let width: CGFloat = 750
         let height: CGFloat = 600
         
         // Animate frame change
@@ -209,7 +209,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             AppState.shared.viewMode = .full
             // Show Zoom button in Full Mode
             window.standardWindowButton(.zoomButton)?.isHidden = false
-            window.setFrame(NSRect(x: 0, y: 0, width: 450, height: 600), display: true)
+            window.setFrame(NSRect(x: 0, y: 0, width: 750, height: 600), display: true)
             window.center()
             window.makeKeyAndOrderFront(nil)
             NSApp.activate(ignoringOtherApps: true)
@@ -222,7 +222,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.standardWindowButton(.zoomButton)?.isHidden = false
         
         // Reset to default full size and center
-        window.setFrame(NSRect(x: 0, y: 0, width: 450, height: 600), display: true)
+        window.setFrame(NSRect(x: 0, y: 0, width: 750, height: 600), display: true)
         window.center()
         window.makeKeyAndOrderFront(nil)
         

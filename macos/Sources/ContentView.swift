@@ -152,98 +152,125 @@ struct MiniView: View {
     }
 }
 
-// MARK: - Full View
+// MARK: - FullView
 struct FullView: View {
     @ObservedObject var appState = AppState.shared
     @ObservedObject var localization = LocalizationManager.shared
     @State private var showSettings = false
+    @State private var showHistory = false
     
     var body: some View {
-        VStack(spacing: 0) {
-            // Header
-            HStack {
-                HStack(spacing: 8) {
-                    LogoView(size: 32)
-                    
-                    Text("app.name".localized)
-                        .font(.system(.title3, design: .rounded).weight(.bold))
-                }
-                
-                Spacer()
-                
-                Button(action: {
-                    showSettings.toggle()
-                }) {
-                    Image(systemName: "gearshape.fill")
-                        .font(.system(size: 16))
-                        .foregroundColor(.secondary)
-                        .padding(8)
-                        .background(Color.gray.opacity(0.1))
-                        .clipShape(Circle())
-                }
-                .buttonStyle(.plain)
-                .popover(isPresented: $showSettings) {
-                    SettingsView()
-                }
-            }
-            .padding(.top, 44)
-            .padding(.horizontal, 20)
-            .padding(.bottom, 16)
-            .background(VisualEffectView(material: .headerView, blendingMode: .withinWindow))
-            
-            // Content Area
+        HStack(spacing: 0) {
             VStack(spacing: 0) {
-                // Source Card
-                TranslationCard(
-                    text: $appState.sourceText,
-                    selection: $appState.sourceLang,
-                    isSource: true,
-                    onLangChange: { appState.performTranslation() },
-                    onTextChange: { appState.performTranslation() }
-                )
-                
-                // Swap Button Area
-                ZStack {
-                    Rectangle()
-                        .fill(Color.gray.opacity(0.1))
-                        .frame(height: 1)
+                // Header
+                HStack {
+                    HStack(spacing: 8) {
+                        LogoView(size: 32)
+                        
+                        Text("app.name".localized)
+                            .font(.system(.title3, design: .rounded).weight(.bold))
+                    }
                     
+                    Spacer()
+                    
+                    // History Button
                     Button(action: {
-                        withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
-                            let tempLang = appState.sourceLang
-                            appState.sourceLang = appState.targetLang
-                            appState.targetLang = tempLang == "auto" ? "en" : tempLang
-                            
-                            let tempText = appState.sourceText
-                            appState.sourceText = appState.targetText
-                            appState.targetText = tempText
+                        withAnimation {
+                            showHistory.toggle()
                         }
-                    }, label: {
-                        Image(systemName: "arrow.up.arrow.down")
-                            .font(.system(size: 14, weight: .bold))
-                            .foregroundColor(.blue)
-                            .frame(width: 32, height: 32)
-                            .background(Circle().fill(Color(NSColor.windowBackgroundColor)))
-                            .shadow(color: .black.opacity(0.1), radius: 2, x: 0, y: 1)
-                            .overlay(Circle().stroke(Color.gray.opacity(0.2), lineWidth: 1))
-                    })
+                    }) {
+                        Image(systemName: "clock")
+                            .font(.system(size: 16))
+                            .foregroundColor(showHistory ? .blue : .secondary)
+                            .padding(8)
+                            .background(showHistory ? Color.blue.opacity(0.1) : Color.gray.opacity(0.1))
+                            .clipShape(Circle())
+                    }
                     .buttonStyle(.plain)
+                    .help("history.title".localized)
+                    .padding(.trailing, 4)
+                    
+                    // Settings Button
+                    Button(action: {
+                        showSettings.toggle()
+                    }) {
+                        Image(systemName: "gearshape.fill")
+                            .font(.system(size: 16))
+                            .foregroundColor(.secondary)
+                            .padding(8)
+                            .background(Color.gray.opacity(0.1))
+                            .clipShape(Circle())
+                    }
+                    .buttonStyle(.plain)
+                    .popover(isPresented: $showSettings) {
+                        SettingsView()
+                    }
                 }
-                .padding(.vertical, -16) // Overlap cards slightly
-                .zIndex(1)
+                .padding(.top, 44)
+                .padding(.horizontal, 20)
+                .padding(.bottom, 16)
+                .background(VisualEffectView(material: .headerView, blendingMode: .withinWindow))
                 
-                // Target Card
-                TranslationCard(
-                    text: $appState.targetText,
-                    selection: $appState.targetLang,
-                    isSource: false,
-                    isLoading: appState.isTranslating,
-                    onLangChange: { appState.performTranslation() }
-                )
+                // Content Area
+                VStack(spacing: 0) {
+                    // Source Card
+                    TranslationCard(
+                        text: $appState.sourceText,
+                        selection: $appState.sourceLang,
+                        isSource: true,
+                        onLangChange: { appState.performTranslation() },
+                        onTextChange: { appState.performTranslation() }
+                    )
+                    
+                    // Swap Button Area
+                    ZStack {
+                        Rectangle()
+                            .fill(Color.gray.opacity(0.1))
+                            .frame(height: 1)
+                        
+                        Button(action: {
+                            withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
+                                let tempLang = appState.sourceLang
+                                appState.sourceLang = appState.targetLang
+                                appState.targetLang = tempLang == "auto" ? "en" : tempLang
+                                
+                                let tempText = appState.sourceText
+                                appState.sourceText = appState.targetText
+                                appState.targetText = tempText
+                            }
+                        }, label: {
+                            Image(systemName: "arrow.up.arrow.down")
+                                .font(.system(size: 14, weight: .bold))
+                                .foregroundColor(.blue)
+                                .frame(width: 32, height: 32)
+                                .background(Circle().fill(Color(NSColor.windowBackgroundColor)))
+                                .shadow(color: .black.opacity(0.1), radius: 2, x: 0, y: 1)
+                                .overlay(Circle().stroke(Color.gray.opacity(0.2), lineWidth: 1))
+                        })
+                        .buttonStyle(.plain)
+                    }
+                    .padding(.vertical, -16) // Overlap cards slightly
+                    .zIndex(1)
+                    
+                    // Target Card
+                    TranslationCard(
+                        text: $appState.targetText,
+                        selection: $appState.targetLang,
+                        isSource: false,
+                        isLoading: appState.isTranslating,
+                        onLangChange: { appState.performTranslation() }
+                    )
+                }
+                .background(Color(NSColor.windowBackgroundColor))
             }
-            .background(Color(NSColor.windowBackgroundColor))
+            
+            // History Sidebar
+            if showHistory {
+                HistoryView(isPresented: $showHistory)
+                    .transition(.move(edge: .trailing))
+            }
         }
-        .frame(minWidth: 400, minHeight: 500)
+        .frame(minWidth: 600, minHeight: 500)
     }
 }
 

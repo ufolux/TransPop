@@ -45,6 +45,15 @@ class AppState: ObservableObject {
                     switch result {
                     case .success(let response):
                         self.targetText = response.text
+                        
+                        // Add to history
+                        HistoryManager.shared.add(
+                            sourceText: self.sourceText,
+                            targetText: response.text,
+                            sourceLang: self.sourceLang,
+                            targetLang: self.targetLang
+                        )
+                        
                     case .failure(let error):
                         print("Translation error: \(error)")
                         self.targetText = "[Error] \(error.localizedDescription)"

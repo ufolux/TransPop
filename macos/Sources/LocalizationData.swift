@@ -50,6 +50,10 @@ let AP_LOCALE_DATA: [String: [String: String]] = [
     // English
     "en": [
         "app.name": "TransPop",
+        "history.title": "History",
+        "history.clear_all": "Clear All",
+        "history.empty": "No History",
+        "lang.auto": "Detect Language",
         "onboarding.title": "Permissions Required",
         "onboarding.desc": "TransPop needs Accessibility permissions to detect the global shortcut (Cmd+C+C) and read the selected text.",
         "onboarding.granted": "Permissions Granted!",
@@ -145,6 +149,10 @@ let AP_LOCALE_DATA: [String: [String: String]] = [
     // Chinese Simplified
     "zh-CN": [
             "app.name": "TransPop",
+            "history.title": "历史记录",
+            "history.clear_all": "清除全部",
+            "history.empty": "暂无历史",
+            "lang.auto": "检测语言",
             "onboarding.title": "需要权限",
             "onboarding.desc": "TransPop 需要辅助功能权限来检测全局快捷键 (Cmd+C+C) 并读取选中的文本。",
             "onboarding.granted": "权限已授予！",
@@ -241,6 +249,10 @@ let AP_LOCALE_DATA: [String: [String: String]] = [
     // Chinese Traditional
     "zh-TW": [
         "app.name": "TransPop",
+        "history.title": "歷史記錄",
+        "history.clear_all": "清除全部",
+        "history.empty": "暫無歷史",
+        "lang.auto": "檢測語言",
         "onboarding.title": "需要權限",
         "onboarding.desc": "TransPop 需要輔助功能權限來檢測全局快捷鍵 (Cmd+C+C) 並讀取選中的文本。",
         "onboarding.granted": "權限已授予！",
@@ -337,6 +349,10 @@ let AP_LOCALE_DATA: [String: [String: String]] = [
     // Japanese
     "ja": [
         "app.name": "TransPop",
+        "history.title": "履歴",
+        "history.clear_all": "すべて消去",
+        "history.empty": "履歴なし",
+        "lang.auto": "言語を検出",
         "onboarding.title": "権限が必要です",
         "onboarding.desc": "TransPop は、グローバルショートカット (Cmd+C+C) を検出し、選択したテキストを読み取るためにアクセシビリティ権限が必要です。",
         "onboarding.granted": "権限が付与されました！",
@@ -433,6 +449,10 @@ let AP_LOCALE_DATA: [String: [String: String]] = [
     // Korean
     "ko": [
         "app.name": "TransPop",
+        "history.title": "기록",
+        "history.clear_all": "모두 지우기",
+        "history.empty": "기록 없음",
+        "lang.auto": "언어 감지",
         "onboarding.title": "권한 필요",
         "onboarding.desc": "TransPop은 전역 단축키(Cmd+C+C)를 감지하고 선택한 텍스트를 읽으려면 손쉬운 사용 권한이 필요합니다.",
         "onboarding.granted": "권한 허용됨!",
@@ -528,6 +548,10 @@ let AP_LOCALE_DATA: [String: [String: String]] = [
     // French
     "fr": [
         "app.name": "TransPop",
+        "history.title": "Historique",
+        "history.clear_all": "Tout effacer",
+        "history.empty": "Aucun historique",
+        "lang.auto": "Détecter la langue",
         "onboarding.title": "Permissions requises",
         "onboarding.desc": "TransPop a besoin des permissions d'accessibilité pour détecter le raccourci global (Cmd+C+C) et lire le texte sélectionné.",
         "onboarding.granted": "Permissions accordées !",
@@ -623,6 +647,10 @@ let AP_LOCALE_DATA: [String: [String: String]] = [
     // German
     "de": [
         "app.name": "TransPop",
+        "history.title": "Verlauf",
+        "history.clear_all": "Alles löschen",
+        "history.empty": "Kein Verlauf",
+        "lang.auto": "Sprache erkennen",
         "onboarding.title": "Berechtigungen erforderlich",
         "onboarding.desc": "TransPop benötigt Zugriffsberechtigungen, um die globale Tastenkombination (Cmd+C+C) zu erkennen und den ausgewählten Text zu lesen.",
         "onboarding.granted": "Berechtigungen erteilt!",
@@ -718,6 +746,10 @@ let AP_LOCALE_DATA: [String: [String: String]] = [
     // Spanish
     "es": [
         "app.name": "TransPop",
+        "history.title": "Historial",
+        "history.clear_all": "Borrar todo",
+        "history.empty": "Sin historial",
+        "lang.auto": "Detectar idioma",
         "onboarding.title": "Permisos requeridos",
         "onboarding.desc": "TransPop necesita permisos de accesibilidad para detectar el atajo global (Cmd+C+C) y leer el texto seleccionado.",
         "onboarding.granted": "¡Permisos concedidos!",
@@ -813,6 +845,10 @@ let AP_LOCALE_DATA: [String: [String: String]] = [
     // Italian
     "it": [
         "app.name": "TransPop",
+        "history.title": "Cronologia",
+        "history.clear_all": "Cancella tutto",
+        "history.empty": "Nessuna cronologia",
+        "lang.auto": "Rileva Lingua",
         "onboarding.title": "Permessi Richiesti",
         "onboarding.desc": "TransPop necessita dei permessi di Accessibilità per rilevare la scorciatoia globale (Cmd+C+C) e leggere il testo selezionato.",
         "onboarding.granted": "Permessi Concessi!",
@@ -908,6 +944,10 @@ let AP_LOCALE_DATA: [String: [String: String]] = [
     // Portuguese
     "pt": [
         "app.name": "TransPop",
+        "history.title": "Histórico",
+        "history.clear_all": "Limpar tudo",
+        "history.empty": "Sem histórico",
+        "lang.auto": "Detectar Idioma",
         "onboarding.title": "Permissões Necessárias",
         "onboarding.desc": "TransPop precisa de permissões de Acessibilidade para detectar o atalho global (Cmd+C+C) e ler o texto selecionado.",
         "onboarding.granted": "Permissões Concedidas!",
@@ -1003,6 +1043,10 @@ let AP_LOCALE_DATA: [String: [String: String]] = [
     // Russian
     "ru": [
         "app.name": "TransPop",
+        "history.title": "История",
+        "history.clear_all": "Очистить все",
+        "history.empty": "История пуста",
+        "lang.auto": "Определить язык",
         "onboarding.title": "Требуются разрешения",
         "onboarding.desc": "TransPop требуются разрешения специальных возможностей для обнаружения глобального ярлыка (Cmd+C+C) и чтения выделенного текста.",
         "onboarding.granted": "Разрешения предоставлены!",
@@ -1098,6 +1142,10 @@ let AP_LOCALE_DATA: [String: [String: String]] = [
     // Vietnam (English fallback for complex strings mostly, to be safe, but names translated)
     "vi": [
         "app.name": "TransPop",
+        "history.title": "Lịch sử",
+        "history.clear_all": "Xóa tất cả",
+        "history.empty": "Không có lịch sử",
+        "lang.auto": "Phát hiện ngôn ngữ",
         "settings.title": "Cài đặt",
         "settings.language": "Ngôn ngữ",
         "settings.general": "Chung",
@@ -1159,6 +1207,10 @@ let AP_LOCALE_DATA: [String: [String: String]] = [
     // Thai
     "th": [
         "app.name": "TransPop",
+        "history.title": "ประวัติ",
+        "history.clear_all": "ล้างทั้งหมด",
+        "history.empty": "ไม่มีประวัติ",
+        "lang.auto": "ตรวจหาภาษา",
         "settings.title": "การตั้งค่า",
         "settings.language": "ภาษา",
         "settings.general": "ทั่วไป",
@@ -1220,6 +1272,10 @@ let AP_LOCALE_DATA: [String: [String: String]] = [
     // Indonesian
     "id": [
         "app.name": "TransPop",
+        "history.title": "Riwayat",
+        "history.clear_all": "Hapus Semua",
+        "history.empty": "Tidak Ada Riwayat",
+        "lang.auto": "Deteksi Bahasa",
         "settings.title": "Pengaturan",
         "settings.language": "Bahasa",
         "settings.general": "Umum",
@@ -1281,6 +1337,10 @@ let AP_LOCALE_DATA: [String: [String: String]] = [
     // Hindi
     "hi": [
         "app.name": "TransPop",
+        "history.title": "इतिहास",
+        "history.clear_all": "सभी हटाएं",
+        "history.empty": "कोई इतिहास नहीं",
+        "lang.auto": "भाषा पहचानें",
         "settings.title": "सेटिंग्स",
         "settings.language": "भाषा",
         "settings.general": "सामान्य",
@@ -1342,6 +1402,10 @@ let AP_LOCALE_DATA: [String: [String: String]] = [
     // Arabic
     "ar": [
         "app.name": "TransPop",
+        "history.title": "السجل",
+        "history.clear_all": "مسح الكل",
+        "history.empty": "لا يوجد سجل",
+        "lang.auto": "كشف اللغة",
         "settings.title": "الإعدادات",
         "settings.language": "اللغة",
         "settings.general": "عام",
@@ -1403,6 +1467,10 @@ let AP_LOCALE_DATA: [String: [String: String]] = [
     // Dutch
     "nl": [
         "app.name": "TransPop",
+        "history.title": "Geschiedenis",
+        "history.clear_all": "Alles wissen",
+        "history.empty": "Geen geschiedenis",
+        "lang.auto": "Taal herkennen",
         "settings.title": "Instellingen",
         "settings.language": "Taal",
         "settings.general": "Algemeen",
@@ -1486,6 +1554,10 @@ let AP_LOCALE_DATA: [String: [String: String]] = [
     // Polish
     "pl": [
         "app.name": "TransPop",
+        "history.title": "Historia",
+        "history.clear_all": "Wyczyść wszystko",
+        "history.empty": "Brak historii",
+        "lang.auto": "Wykryj język",
         "settings.title": "Ustawienia",
         "settings.language": "Język",
         "settings.general": "Ogólne",
@@ -1569,6 +1641,10 @@ let AP_LOCALE_DATA: [String: [String: String]] = [
     // Turkish
     "tr": [
         "app.name": "TransPop",
+        "history.title": "Geçmiş",
+        "history.clear_all": "Tümünü Temizle",
+        "history.empty": "Geçmiş Yok",
+        "lang.auto": "Dili Algıla",
         "settings.title": "Ayarlar",
         "settings.language": "Dil",
         "settings.general": "Genel",
@@ -1652,6 +1728,10 @@ let AP_LOCALE_DATA: [String: [String: String]] = [
     // Ukrainian
     "uk": [
         "app.name": "TransPop",
+        "history.title": "Історія",
+        "history.clear_all": "Очистити все",
+        "history.empty": "Історія порожня",
+        "lang.auto": "Визначити мову",
         "settings.title": "Налаштування",
         "settings.language": "Мова",
         "settings.general": "Загальні",
@@ -1735,6 +1815,10 @@ let AP_LOCALE_DATA: [String: [String: String]] = [
     // Swedish
     "sv": [
         "app.name": "TransPop",
+        "history.title": "Historik",
+        "history.clear_all": "Rensa allt",
+        "history.empty": "Ingen historik",
+        "lang.auto": "Upptäck språk",
         "settings.title": "Inställningar",
         "settings.language": "Språk",
         "settings.general": "Allmänt",
@@ -1818,6 +1902,10 @@ let AP_LOCALE_DATA: [String: [String: String]] = [
     // Danish
     "da": [
         "app.name": "TransPop",
+        "history.title": "Historik",
+        "history.clear_all": "Ryd alt",
+        "history.empty": "Ingen historik",
+        "lang.auto": "Registrer sprog",
         "settings.title": "Indstillinger",
         "settings.language": "Sprog",
         "settings.general": "Generelt",
@@ -1901,6 +1989,10 @@ let AP_LOCALE_DATA: [String: [String: String]] = [
     // Finnish
     "fi": [
         "app.name": "TransPop",
+        "history.title": "Historia",
+        "history.clear_all": "Tyhjennä kaikki",
+        "history.empty": "Ei historiaa",
+        "lang.auto": "Tunnista kieli",
         "settings.title": "Asetukset",
         "settings.language": "Kieli",
         "settings.general": "Yleiset",
@@ -1984,6 +2076,10 @@ let AP_LOCALE_DATA: [String: [String: String]] = [
     // Norwegian
     "no": [
         "app.name": "TransPop",
+        "history.title": "Historikk",
+        "history.clear_all": "Slett alt",
+        "history.empty": "Ingen historikk",
+        "lang.auto": "Oppdag språk",
         "settings.title": "Innstillinger",
         "settings.language": "Språk",
         "settings.general": "Generelt",
@@ -2067,6 +2163,10 @@ let AP_LOCALE_DATA: [String: [String: String]] = [
     // Greek
     "el": [
         "app.name": "TransPop",
+        "history.title": "Ιστορικό",
+        "history.clear_all": "Εκκαθάριση όλων",
+        "history.empty": "Κανένα ιστορικό",
+        "lang.auto": "Ανίχνευση γλώσσας",
         "settings.title": "Ρυθμίσεις",
         "settings.language": "Γλώσσα",
         "settings.general": "Γενικά",
@@ -2150,6 +2250,10 @@ let AP_LOCALE_DATA: [String: [String: String]] = [
     // Czech
     "cs": [
         "app.name": "TransPop",
+        "history.title": "Historie",
+        "history.clear_all": "Vymazat vše",
+        "history.empty": "Žádná historie",
+        "lang.auto": "Detekovat jazyk",
         "settings.title": "Nastavení",
         "settings.language": "Jazyk",
         "settings.general": "Obecné",
@@ -2233,6 +2337,10 @@ let AP_LOCALE_DATA: [String: [String: String]] = [
     // Romanian
     "ro": [
         "app.name": "TransPop",
+        "history.title": "Istoric",
+        "history.clear_all": "Șterge tot",
+        "history.empty": "Nicio istoric",
+        "lang.auto": "Detectează limba",
         "settings.title": "Setări",
         "settings.language": "Limbă",
         "settings.general": "General",
@@ -2316,6 +2424,10 @@ let AP_LOCALE_DATA: [String: [String: String]] = [
     // Hungarian
     "hu": [
         "app.name": "TransPop",
+        "history.title": "Előzmények",
+        "history.clear_all": "Összes törlése",
+        "history.empty": "Nincsenek előzmények",
+        "lang.auto": "Nyelv felismerése",
         "settings.title": "Beállítások",
         "settings.language": "Nyelv",
         "settings.general": "Általános",
@@ -2401,6 +2513,10 @@ let AP_LOCALE_DATA: [String: [String: String]] = [
     // Malay
     "ms": [
         "app.name": "TransPop",
+        "history.title": "Sejarah",
+        "history.clear_all": "Kosongkan Semua",
+        "history.empty": "Tiada Sejarah",
+        "lang.auto": "Kesan bahasa",
         "settings.title": "Tetapan",
         "settings.language": "Bahasa",
         "settings.general": "Umum",
@@ -2484,6 +2600,10 @@ let AP_LOCALE_DATA: [String: [String: String]] = [
     // Filipino (Tagalog)
     "tl": [
         "app.name": "TransPop",
+        "history.title": "Kasaysayan",
+        "history.clear_all": "I-clear Lahat",
+        "history.empty": "Walang Kasaysayan",
+        "lang.auto": "Detektahing wika",
         "settings.title": "Mga Setting",
         "settings.language": "Wika",
         "settings.general": "Pangkalahatan",
@@ -2567,6 +2687,10 @@ let AP_LOCALE_DATA: [String: [String: String]] = [
     // Bengali (Bangla)
     "bn": [
         "app.name": "TransPop",
+        "history.title": "ইতিহাস",
+        "history.clear_all": "সব মুছুন",
+        "history.empty": "কোন ইতিহাস নেই",
+        "lang.auto": "ভাষা শনাক্ত করুন",
         "settings.title": "সেটিংস",
         "settings.language": "ভাষা",
         "settings.general": "সাধারণ",
@@ -2650,6 +2774,10 @@ let AP_LOCALE_DATA: [String: [String: String]] = [
     // Persian (Farsi)
     "fa": [
         "app.name": "TransPop",
+        "history.title": "تاریخچه",
+        "history.clear_all": "پاک کردن همه",
+        "history.empty": "تاریخچه‌ای نیست",
+        "lang.auto": "تشخیص زبان",
         "settings.title": "تنظیمات",
         "settings.language": "زبان",
         "settings.general": "عمومی",
@@ -2733,6 +2861,10 @@ let AP_LOCALE_DATA: [String: [String: String]] = [
     // Hebrew
     "he": [
         "app.name": "TransPop",
+        "history.title": "היסטוריה",
+        "history.clear_all": "נקה הכל",
+        "history.empty": "אין היסטוריה",
+        "lang.auto": "זיהוי שפה",
         "settings.title": "הגדרות",
         "settings.language": "שפה",
         "settings.general": "כללי",
@@ -2816,6 +2948,10 @@ let AP_LOCALE_DATA: [String: [String: String]] = [
     // Urdu
     "ur": [
         "app.name": "TransPop",
+        "history.title": "تاریخچہ",
+        "history.clear_all": "سب صاف کریں",
+        "history.empty": "کوئی تاریخچہ نہیں",
+        "lang.auto": "زبان کی شناخت",
         "settings.title": "ترتیبات",
         "settings.language": "زبان",
         "settings.general": "عام",
@@ -2899,6 +3035,10 @@ let AP_LOCALE_DATA: [String: [String: String]] = [
     // Slovak
     "sk": [
         "app.name": "TransPop",
+        "history.title": "História",
+        "history.clear_all": "Vymazať všetko",
+        "history.empty": "Žiadna história",
+        "lang.auto": "Zistiť jazyk",
         "settings.title": "Nastavenia",
         "settings.language": "Jazyk",
         "settings.general": "Všeobecné",
@@ -2982,6 +3122,10 @@ let AP_LOCALE_DATA: [String: [String: String]] = [
     // Croatian
     "hr": [
         "app.name": "TransPop",
+        "history.title": "Povijest",
+        "history.clear_all": "Očisti sve",
+        "history.empty": "Nema povijesti",
+        "lang.auto": "Otkrij jezik",
         "settings.title": "Postavke",
         "settings.language": "Jezik",
         "settings.general": "Općenito",
@@ -3065,6 +3209,10 @@ let AP_LOCALE_DATA: [String: [String: String]] = [
     // Bulgarian
     "bg": [
         "app.name": "TransPop",
+        "history.title": "История",
+        "history.clear_all": "Изчисти всички",
+        "history.empty": "Няма история",
+        "lang.auto": "Открий език",
         "settings.title": "Настройки",
         "settings.language": "Език",
         "settings.general": "Общи",
@@ -3148,6 +3296,10 @@ let AP_LOCALE_DATA: [String: [String: String]] = [
     // Serbian
     "sr": [
         "app.name": "TransPop",
+        "history.title": "Историја",
+        "history.clear_all": "Обриши све",
+        "history.empty": "Нема историје",
+        "lang.auto": "Откриј језик",
         "settings.title": "Подешавања",
         "settings.language": "Језик",
         "settings.general": "Опште",
@@ -3231,6 +3383,10 @@ let AP_LOCALE_DATA: [String: [String: String]] = [
     // Catalan
     "ca": [
         "app.name": "TransPop",
+        "history.title": "Historial",
+        "history.clear_all": "Esborrar-ho tot",
+        "history.empty": "Sense historial",
+        "lang.auto": "Detecta idioma",
         "settings.title": "Configuració",
         "settings.language": "Idioma",
         "settings.general": "General",
@@ -3314,6 +3470,10 @@ let AP_LOCALE_DATA: [String: [String: String]] = [
     // Tamil
     "ta": [
         "app.name": "TransPop",
+        "history.title": "வரலாறு",
+        "history.clear_all": "அனைத்தையும் அழி",
+        "history.empty": "வரலாறு இல்லை",
+        "lang.auto": "மொழி கண்டறிதல்",
         "settings.title": "அமைப்புகள்",
         "settings.language": "மொழி",
         "settings.general": "பொது",

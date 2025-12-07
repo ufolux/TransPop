@@ -96,6 +96,29 @@ struct SettingsView: View {
                             RoundedRectangle(cornerRadius: 10)
                                 .stroke(Color.gray.opacity(0.2), lineWidth: 1)
                         )
+                        
+                        // History Settings
+                        VStack(spacing: 0) {
+                            HStack {
+                                Label("history.title".localized, systemImage: "clock")
+                                    .foregroundColor(.primary)
+                                Spacer()
+                                Stepper(value: Binding(
+                                    get: { UserDefaults.standard.integer(forKey: "historyMaxItems") > 0 ? UserDefaults.standard.integer(forKey: "historyMaxItems") : 100 },
+                                    set: { UserDefaults.standard.set($0, forKey: "historyMaxItems") }
+                                ), in: 10...500, step: 10) {
+                                    Text("\(UserDefaults.standard.integer(forKey: "historyMaxItems") > 0 ? UserDefaults.standard.integer(forKey: "historyMaxItems") : 100)")
+                                }
+                                .frame(width: 140)
+                            }
+                            .padding()
+                            .background(Color(NSColor.controlBackgroundColor))
+                        }
+                        .cornerRadius(10)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(Color.gray.opacity(0.2), lineWidth: 1)
+                        )
                     }
                     
                     // Translation API Section
